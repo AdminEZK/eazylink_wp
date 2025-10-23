@@ -60,6 +60,10 @@ Thumbs.db
 *.backup
 *.back
 *.bck
+*.wpress
+
+# All-in-One WP Migration backups
+/app/public/wp-content/ai1wm-backups/
 
 # Environment files
 .env
