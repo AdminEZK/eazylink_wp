@@ -1,16 +1,5 @@
-/* TEST - Bordure rouge visible sur le header */
-.header {
-    border: 5px solid red !important;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5) !important;
-}
-
-/* TEST - Bordure verte sur le footer */
-.footer {
-    border: 5px solid lime !important;
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5) !important;
-}
-
-/* TEST - Bordure bleue sur les boutons */
-.btn-primary, .btn-secondary {
-    border: 3px solid blue !important;
+/* TEST - Bordure rouge sur le body pour vérifier le déploiement */
+body {
+    border: 10px solid red !important;
+    box-sizing: border-box !important;
 }
