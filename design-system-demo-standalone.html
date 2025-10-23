@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EazyLink Design System - FAQ & Touch Points</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* RESET CSS COMPLET */
+        *, *::before, *::after {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Variables CSS */
+        :root {
+            --blue-night: #1a1a3e !important;
+            --deep-purple: #2d1b69 !important;
+            --bright-orange: #FF7043 !important;
+            --accent-pink: #ff006e !important;
+            --light-purple: #8B5CF6 !important;
+            --white: #FFFFFF !important;
+            --gradient-main: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+            --accent-gradient: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+            --font-heading: 'Montserrat', sans-serif !important;
+            --font-body: 'Inter', sans-serif !important;
+            --space-sm: 8px !important;
+            --space-md: 16px !important;
+            --space-lg: 24px !important;
+            --space-xl: 48px !important;
+            --space-2xl: 64px !important;
+            --space-3xl: 96px !important;
+            --border-radius-lg: 16px !important;
+            --border-radius-xl: 50px !important;
+        }
+
+        body {
+            font-family: var(--font-body) !important;
+            background: var(--gradient-main) !important;
+            color: var(--white) !important;
+            line-height: 1.6 !important;
+            min-height: 100vh !important;
+            overflow-x: hidden !important;
+        }
+
+        .container {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 var(--space-lg) !important;
+        }
+
+        .demo-header {
+            text-align: center !important;
+            padding: var(--space-3xl) 0 var(--space-2xl) !important;
+            background: #1a1a3e !important;
+            border-radius: var(--border-radius-lg) !important;
+            margin-bottom: var(--space-xl) !important;
+        }
+
+        .demo-header h1 {
+            font-family: var(--font-heading) !important;
+            font-size: 3rem !important;
+            margin-bottom: var(--space-md) !important;
+            background: linear-gradient(135deg, var(--white) 0%, var(--bright-orange) 50%, var(--accent-pink) 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+        }
+
+        .demo-header p {
+            font-size: 1.2rem !important;
+            opacity: 0.9 !important;
+            max-width: 600px !important;
+            margin: 0 auto !important;
+        }
+
+        .demo-section {
+            margin-bottom: var(--space-3xl) !important;
+        }
+
+        .demo-section h2 {
+            font-family: var(--font-heading) !important;
+            font-size: 2.5rem !important;
+            margin-bottom: var(--space-xl) !important;
+            text-align: center !important;
+            color: var(--bright-orange) !important;
+        }
+
+        .demo-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: var(--border-radius-lg) !important;
+            padding: var(--space-xl) !important;
+            backdrop-filter: blur(10px) !important;
+            margin-bottom: var(--space-xl) !important;
+        }
+
+        .demo-item h3 {
+            font-family: var(--font-heading) !important;
+            font-size: 1.5rem !important;
+            margin-bottom: var(--space-lg) !important;
+            color: var(--light-purple) !important;
+        }
+
+        .demo-item p {
+            margin-bottom: var(--space-lg) !important;
+            opacity: 0.8 !important;
+        }
+
+        /* === FAQ COMPONENT === */
+        .faq-section {
+            padding: var(--space-xl) 0 !important;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            margin-bottom: var(--space-md) !important;
+            transition: background-color 0.3s ease !important;
+        }
+
+        .faq-item[open] {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .faq-item summary {
+            font-size: 1.25rem !important;
+            font-weight: 600 !important;
+            padding: var(--space-lg) !important;
+            cursor: pointer !important;
+            list-style: none !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            color: var(--white) !important;
+            font-family: var(--font-heading) !important;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none !important;
+        }
+
+        .faq-item summary::after {
+            content: '+' !important;
+            font-size: 2.5rem !important;
+            color: var(--bright-orange) !important;
+            transition: transform 0.3s ease !important;
+            font-weight: 300 !important;
+            line-height: 1 !important;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg) !important;
+        }
+
+        .faq-item .answer {
+            padding: 0 var(--space-lg) var(--space-lg) var(--space-lg) !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.7 !important;
+        }
+
+        .faq-item .answer p {
+            margin: 0 !important;
+            font-family: var(--font-body) !important;
+        }
+
+        /* === TOUCH POINT COMPONENT === */
+        .touch-point {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: var(--border-radius-lg) !important;
+            padding: var(--space-xl) !important;
+            text-align: center !important;
+            margin: var(--space-xl) 0 !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .touch-point:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .touch-point h2 {
+            font-size: 2rem !important;
+            font-weight: 600 !important;
+            color: var(--white) !important;
+            margin-bottom: var(--space-md) !important;
+            font-family: var(--font-heading) !important;
+        }
+
+        .touch-point p {
+            font-size: 1.1rem !important;
+            color: rgba(255, 255, 255, 0.8) !important;
+            line-height: 1.7 !important;
+            margin-bottom: var(--space-xl) !important;
+            max-width: 600px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            font-family: var(--font-body) !important;
+        }
+
+        /* Touch Point Variants */
+        .touch-point.touch-point-primary {
+            background: linear-gradient(135deg, rgba(255, 112, 67, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%) !important;
+            border-color: rgba(255, 112, 67, 0.3) !important;
+        }
+
+        .touch-point.touch-point-primary:hover {
+            background: linear-gradient(135deg, rgba(255, 112, 67, 0.15) 0%, rgba(255, 0, 110, 0.15) 100%) !important;
+            border-color: rgba(255, 112, 67, 0.5) !important;
+        }
+
+        .touch-point.touch-point-secondary {
+            background: rgba(45, 27, 105, 0.3) !important;
+            border-color: rgba(139, 92, 246, 0.3) !important;
+        }
+
+        .touch-point.touch-point-secondary:hover {
+            background: rgba(45, 27, 105, 0.4) !important;
+            border-color: rgba(139, 92, 246, 0.5) !important;
+        }
+
+        .touch-point.touch-point-compact {
+            padding: var(--space-lg) !important;
+            margin: var(--space-lg) 0 !important;
+        }
+
+        .touch-point.touch-point-compact h2 {
+            font-size: 1.5rem !important;
+            margin-bottom: var(--space-sm) !important;
+        }
+
+        .touch-point.touch-point-compact p {
+            font-size: 1rem !important;
+            margin-bottom: var(--space-lg) !important;
+        }
+
+        /* Touch Point with Icon */
+        .touch-point-icon {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: var(--accent-gradient) !important;
+            border-radius: 50% !important;
+            margin: 0 auto var(--space-md) !important;
+            font-size: 1.5rem !important;
+            color: var(--white) !important;
+        }
+
+        /* Touch Point Actions */
+        .touch-point-actions {
+            display: flex !important;
+            justify-content: center !important;
+            gap: var(--space-md) !important;
+            flex-wrap: wrap !important;
+            margin-top: var(--space-lg) !important;
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 18px 48px !important;
+            border-radius: 60px !important;
+            font-weight: 600 !important;
+            font-size: 1.1rem !important;
+            text-decoration: none !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+            cursor: pointer !important;
+            border: none !important;
+            font-family: var(--font-heading) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+            color: var(--white) !important;
+            border: none !important;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important;
+            transform: translateY(-2px) !important;
+            color: var(--white) !important;
+            text-decoration: none !important;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: var(--white) !important;
+            border: 2px solid rgba(255, 255, 255, 0.5) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: var(--white) !important;
+            color: var(--white) !important;
+            text-decoration: none !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .btn-outline {
+            background: transparent !important;
+            border: 1px solid var(--bright-orange) !important;
+            color: var(--bright-orange) !important;
+        }
+
+        .btn-outline:hover {
+            background: var(--bright-orange) !important;
+            color: var(--white) !important;
+            transform: translateY(-2px) !important;
+            text-decoration: none !important;
+        }
+
+        /* Effet de reflet au hover sur boutons primaires */
+        .btn-primary::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+            transition: left 0.6s ease !important;
+            opacity: 0 !important;
+        }
+
+        .btn-primary:hover::before {
+            left: 100% !important;
+            opacity: 1 !important;
+        }
+
+        /* Code display */
+        .code-block {
+            background: rgba(0, 0, 0, 0.3) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: var(--border-radius-lg) !important;
+            padding: var(--space-lg) !important;
+            margin: var(--space-lg) 0 !important;
+            overflow-x: auto !important;
+        }
+
+        .code-block pre {
+            color: #e6e6e6 !important;
+            font-family: 'Courier New', monospace !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin: 0 !important;
+        }
+
+        .code-block code {
+            color: var(--bright-orange) !important;
+        }
+
+        /* Buttons demo section */
+        .buttons-demo {
+            display: flex !important;
+            gap: 16px !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            margin: 24px 0 !important;
+        }
+
+        /* Footer */
+        .demo-footer {
+            text-align: center !important;
+            padding: 48px 0 !important;
+            opacity: 0.7 !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .demo-header h1 {
+                font-size: 2rem !important;
+            }
+            
+            .touch-point {
+                padding: var(--space-lg) !important;
+                margin: var(--space-lg) 0 !important;
+            }
+            
+            .touch-point h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .touch-point p {
+                font-size: 1rem !important;
+            }
+            
+            .touch-point-actions {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .touch-point-actions .btn {
+                width: 100% !important;
+                max-width: 300px !important;
+            }
+
+            .buttons-demo {
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .buttons-demo .btn {
+                width: 100% !important;
+                max-width: 300px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="demo-header">
+            <h1>EazyLink Design System</h1>
+            <p>Composants FAQ et Touch Points - Guide de référence et exemples d'utilisation</p>
+        </header>
+
+        <!-- Section FAQ -->
+        <section class="demo-section">
+            <h2><i class="fas fa-question-circle"></i> Composant FAQ</h2>
+            
+            <div class="demo-item">
+                <h3>FAQ Standard</h3>
+                <p>Composant FAQ avec animation d'ouverture/fermeture et style glassmorphism.</p>
+                
+                <div class="faq-section">
+                    <details class="faq-item">
+                        <summary>Qu'est-ce que l'intelligence artificielle ?</summary>
+                        <div class="answer">
+                            <p>L'intelligence artificielle (IA) est une technologie qui permet aux machines d'apprendre, de raisonner et de prendre des décisions de manière autonome, imitant l'intelligence humaine.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Comment EazyLink peut-il m'aider ?</summary>
+                        <div class="answer">
+                            <p>Nous vous accompagnons dans votre transformation IA avec une approche personnalisée : diagnostic, stratégie, implémentation et formation de vos équipes.</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>Quels sont les délais d'implémentation ?</summary>
+                        <div class="answer">
+                            <p>Les délais varient selon la complexité du projet, généralement entre 2 à 6 mois pour une implémentation complète, avec des résultats visibles dès les premières semaines.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;details class="faq-item"&gt;
+    &lt;summary&gt;Votre question ici&lt;/summary&gt;
+    &lt;div class="answer"&gt;
+        &lt;p&gt;Votre réponse ici&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Touch Points -->
+        <section class="demo-section">
+            <h2><i class="fas fa-hand-pointer"></i> Composants Touch Point</h2>
+            
+            <!-- Touch Point Standard -->
+            <div class="demo-item">
+                <h3>Touch Point Standard</h3>
+                <p>Composant de base avec deux boutons d'action.</p>
+                
+                <div class="touch-point">
+                    <h2>Découvrez nos solutions IA</h2>
+                    <p>Transformez votre entreprise avec nos solutions d'intelligence artificielle personnalisées et notre accompagnement expert.</p>
+                    <div class="touch-point-actions">
+                        <a href="#" class="btn btn-primary">Nous contacter</a>
+                        <a href="#" class="btn btn-secondary">Découvrir nos solutions</a>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;div class="touch-point"&gt;
+    &lt;h2&gt;Découvrez nos solutions IA&lt;/h2&gt;
+    &lt;p&gt;Transformez votre entreprise...&lt;/p&gt;
+    &lt;div class="touch-point-actions"&gt;
+        &lt;a href="#" class="btn btn-primary"&gt;Nous contacter&lt;/a&gt;
+        &lt;a href="#" class="btn btn-secondary"&gt;Découvrir nos solutions&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Touch Point Primary -->
+            <div class="demo-item">
+                <h3>Touch Point Primary</h3>
+                <p>Variante avec dégradé orange-rose pour les actions importantes.</p>
+                
+                <div class="touch-point touch-point-primary">
+                    <h2>Prêt à transformer votre approche de l'IA ?</h2>
+                    <p>Chez EazyLink, nous combinons expertise stratégique et support opérationnel pour vous offrir un accompagnement complet.</p>
+                    <a href="#" class="btn btn-primary">Diagnostic gratuit</a>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;div class="touch-point touch-point-primary"&gt;
+    &lt;h2&gt;Prêt à transformer votre approche de l'IA ?&lt;/h2&gt;
+    &lt;p&gt;Chez EazyLink, nous combinons expertise...&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Diagnostic gratuit&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Touch Point Secondary -->
+            <div class="demo-item">
+                <h3>Touch Point Secondary</h3>
+                <p>Variante avec accent violet pour les actions secondaires.</p>
+                
+                <div class="touch-point touch-point-secondary">
+                    <h2>Besoin d'expertise sectorielle ?</h2>
+                    <p>Nos experts spécialisés par secteur vous accompagnent dans votre transformation digitale avec une approche sur mesure.</p>
+                    <a href="#" class="btn btn-secondary">Rencontrer nos experts</a>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;div class="touch-point touch-point-secondary"&gt;
+    &lt;h2&gt;Besoin d'expertise sectorielle ?&lt;/h2&gt;
+    &lt;p&gt;Nos experts spécialisés par secteur...&lt;/p&gt;
+    &lt;a href="#" class="btn btn-secondary"&gt;Rencontrer nos experts&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Touch Point Compact -->
+            <div class="demo-item">
+                <h3>Touch Point Compact</h3>
+                <p>Version réduite pour les espaces limités.</p>
+                
+                <div class="touch-point touch-point-compact">
+                    <h2>Une question ?</h2>
+                    <p>Notre équipe est là pour vous aider.</p>
+                    <a href="#" class="btn btn-outline">Nous contacter</a>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;div class="touch-point touch-point-compact"&gt;
+    &lt;h2&gt;Une question ?&lt;/h2&gt;
+    &lt;p&gt;Notre équipe est là pour vous aider.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-outline"&gt;Nous contacter&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Touch Point avec Icône -->
+            <div class="demo-item">
+                <h3>Touch Point avec Icône</h3>
+                <p>Touch point enrichi d'une icône pour plus d'impact visuel.</p>
+                
+                <div class="touch-point touch-point-secondary">
+                    <div class="touch-point-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2>Restez informé</h2>
+                    <p>Recevez nos dernières analyses et tendances IA directement dans votre boîte mail.</p>
+                    <a href="#" class="btn btn-primary">S'abonner</a>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;div class="touch-point touch-point-secondary"&gt;
+    &lt;div class="touch-point-icon"&gt;
+        &lt;i class="fas fa-envelope"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Restez informé&lt;/h2&gt;
+    &lt;p&gt;Recevez nos dernières analyses...&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;S'abonner&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Boutons -->
+        <section class="demo-section">
+            <h2><i class="fas fa-mouse-pointer"></i> Types de Boutons</h2>
+            
+            <div class="demo-item">
+                <h3>Boutons Disponibles</h3>
+                <p>Différents styles de boutons utilisables dans les touch points.</p>
+                
+                <div class="buttons-demo">
+                    <a href="#" class="btn btn-primary">Bouton Primary</a>
+                    <a href="#" class="btn btn-secondary">Bouton Secondary</a>
+                    <a href="#" class="btn btn-outline">Bouton Outline</a>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;a href="#" class="btn btn-primary"&gt;Bouton Primary&lt;/a&gt;
+&lt;a href="#" class="btn btn-secondary"&gt;Bouton Secondary&lt;/a&gt;
+&lt;a href="#" class="btn btn-outline"&gt;Bouton Outline&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="demo-footer">
+            <p>EazyLink Design System - Composants FAQ et Touch Points</p>
+            <p>Version standalone sans conflits CSS - Utilisez ces composants pour créer des interfaces cohérentes et engageantes.</p>
+        </footer>
+    </div>
+</body>
+</html>

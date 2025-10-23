@@ -1,0 +1,338 @@
+/* CSS spécifique à la page article - Reprise exacte de la structure fournie */
+
+/* 1. VARIABLES ET CONFIGURATION GÉNÉRALE */
+:root {
+    --blue-night: #1a1a3e;
+    --violet-deep: #2d1b69;
+    --orange-vif: #FF7043;
+    --rose-accent: #ff006e;
+    --white: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --gradient-primary: linear-gradient(135deg, var(--orange-vif) 0%, var(--rose-accent) 100%);
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 48px;
+    --space-xxl: 96px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body.single-post { font-family: var(--font-body); background-color: var(--blue-night); color: var(--white); line-height: 1.7; }
+.container { max-width: 800px; margin: 0 auto; padding: 0 var(--space-lg); }
+
+h1, h2, h3 { font-family: var(--font-title); font-weight: 700; line-height: 1.3; margin-bottom: var(--space-lg); }
+h1 { font-size: 2.8rem; }
+h2 { font-size: 2rem; margin-top: var(--space-xl); }
+h3 { font-size: 1.5rem; margin-top: var(--space-lg); color: var(--orange-vif); }
+
+p { margin-bottom: var(--space-md); color: var(--text-secondary); }
+a { color: var(--orange-vif); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; }
+strong { color: var(--white); font-weight: 700; }
+ul { list-style-position: inside; padding-left: var(--space-md); margin-bottom: var(--space-md); }
+li { margin-bottom: var(--space-sm); }
+
+/* 2. STRUCTURE DE L'ARTICLE */
+
+/* Fil d'Ariane */
+.breadcrumb-section {
+    padding: var(--space-lg) 0;
+    background-color: var(--violet-deep);
+}
+.breadcrumb {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.breadcrumb a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+.breadcrumb a:hover {
+    color: var(--white);
+}
+.breadcrumb span {
+    color: var(--white);
+    font-weight: 600;
+}
+
+.article-header {
+    padding: var(--space-xl) 0;
+    text-align: center;
+    background: var(--violet-deep);
+}
+.article-header .category {
+    font-family: var(--font-title);
+    font-weight: 700;
+    color: var(--orange-vif);
+    text-transform: uppercase;
+    margin-bottom: var(--space-md);
+}
+.article-header h1 {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.article-meta {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.article-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: var(--space-xl) 0;
+}
+
+.article-content {
+    padding: var(--space-xl) 0;
+}
+
+/* Partage */
+.article-share {
+    margin: var(--space-lg) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: #0077B5; /* Couleur officielle de LinkedIn */
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: var(--font-title);
+    transition: background-color 0.3s ease;
+}
+.share-btn:hover {
+    background: #005E8E;
+    text-decoration: none;
+}
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.highlight-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--orange-vif);
+    padding: var(--space-lg);
+    margin: var(--space-xl) 0;
+    border-radius: 0 8px 8px 0;
+}
+.highlight-box p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.key-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+    text-align: center;
+}
+.stat-item .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--orange-vif);
+    display: block;
+}
+.stat-item .stat-label {
+    color: var(--text-secondary);
+}
+
+.article-cta {
+    background: var(--gradient-primary);
+    text-align: center;
+    padding: var(--space-xl);
+    border-radius: 16px;
+    margin-top: var(--space-xxl);
+}
+.article-cta h2 { margin: 0 0 var(--space-md) 0; }
+.article-cta p { color: var(--white); max-width: 600px; margin: 0 auto var(--space-lg); }
+.btn { display: inline-block; padding: 18px 48px; border-radius: 60px; text-decoration: none; font-weight: 600; font-family: var(--font-title); transition: all 0.3s ease; position: relative; overflow: hidden; font-size: 1.1rem; }
+.btn-light { background: var(--white); color: var(--blue-night); }
+.btn-light:hover { transform: translateY(-2px); }
+
+/* Effet de reflet au hover sur boutons light article */
+.btn-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    transition: left 0.6s ease;
+    opacity: 0;
+}
+
+.btn-light:hover::before {
+    left: 100%;
+    opacity: 1;
+}
+
+/* === TOUCH POINT COMPONENT FORCÉ (Design System) === */
+body.single-post .touch-point {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 48px !important;
+    text-align: center !important;
+    margin: 48px 0 !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+}
+
+body.single-post .touch-point:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+body.single-post .touch-point h2 {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 16px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+body.single-post .touch-point p {
+    font-size: 1.1rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 48px !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+body.single-post .touch-point .btn {
+    margin-top: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 18px 48px !important;
+    border-radius: 60px !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border: none !important;
+    font-family: 'Montserrat', sans-serif !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Touch Point Primary */
+body.single-post .touch-point.touch-point-primary {
+    background: linear-gradient(135deg, rgba(255, 112, 67, 0.1) 0%, rgba(255, 0, 110, 0.1) 100%) !important;
+    border-color: rgba(255, 112, 67, 0.3) !important;
+}
+
+body.single-post .touch-point.touch-point-primary:hover {
+    background: linear-gradient(135deg, rgba(255, 112, 67, 0.15) 0%, rgba(255, 0, 110, 0.15) 100%) !important;
+    border-color: rgba(255, 112, 67, 0.5) !important;
+}
+
+/* Boutons primaires dans touch point */
+body.single-post .touch-point .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+body.single-post .touch-point .btn-primary:hover {
+    background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important;
+    transform: translateY(-2px) !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+}
+
+/* Effet de reflet au hover sur boutons primaires */
+body.single-post .touch-point .btn-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.single-post .touch-point .btn-primary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Touch Point Actions */
+body.single-post .touch-point-actions {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    margin-top: 24px !important;
+}
+
+/* Boutons secondaires dans touch point */
+body.single-post .touch-point .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.single-post .touch-point .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    .article-image { height: 250px; }
+    
+    body.single-post .touch-point {
+        padding: 24px !important;
+        margin: 24px 0 !important;
+    }
+    
+    body.single-post .touch-point h2 {
+        font-size: 1.5rem !important;
+    }
+    
+    body.single-post .touch-point p {
+        font-size: 1rem !important;
+    }
+    
+    body.single-post .touch-point-actions {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    body.single-post .touch-point-actions .btn {
+        width: 100% !important;
+        max-width: 300px !important;
+    }
+}

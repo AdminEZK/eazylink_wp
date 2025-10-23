@@ -1,0 +1,283 @@
+/* CSS spécifique à la page des solutions */
+
+/* 1. VARIABLES SPÉCIFIQUES SOLUTIONS (utilise les variables du design system) */
+:root {
+    /* Variables spécifiques aux cartes solutions */
+    --solution-card-bg: rgba(255, 255, 255, 0.05);
+    --solution-card-border: rgba(255, 255, 255, 0.1);
+    --solution-card-hover-border: var(--bright-orange);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive process grid - 4 colonnes desktop */
+@media (min-width: 768px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colonnes tablette */
+    }
+}
+
+@media (min-width: 1024px) {
+    .process-grid {
+        grid-template-columns: repeat(4, 1fr) !important; /* 4 colonnes desktop */
+    }
+}
+
+/* 2. SECTIONS SPÉCIFIQUES SOLUTIONS */
+
+/* Section Hero des Solutions */
+.solutions-hero-section {
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    background: var(--gradient-main);
+}
+
+.solutions-hero-section h1 {
+    max-width: 800px;
+    margin: 0 auto var(--space-lg);
+    font-size: 2rem; /* Mobile par défaut */
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.solutions-hero-section p {
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    font-size: 1rem; /* Mobile par défaut */
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Responsive Hero */
+@media (min-width: 768px) {
+    .solutions-hero-section {
+        padding: var(--space-3xl) 0;
+    }
+    
+    .solutions-hero-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .solutions-hero-section p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .solutions-hero-section h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Section Solutions Grid */
+.solutions-section {
+    background-color: var(--blue-night);
+}
+
+.solutions-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile-first: 1 colonne par défaut */
+    gap: var(--space-lg);
+}
+
+.service-card {
+    background: var(--solution-card-bg);
+    border: 1px solid var(--solution-card-border);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.service-card .card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-gradient);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.service-card .card-icon svg {
+    stroke: var(--white);
+    width: 24px;
+    height: 24px;
+}
+
+.service-card h4 {
+    margin-bottom: var(--space-md);
+    font-size: 1.25rem;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+}
+
+/* Section Process Cards - Grille simple 4 colonnes */
+.process-section {
+    background-color: var(--deep-purple);
+    padding: var(--space-3xl) 0;
+}
+
+.process-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+.process-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.process-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--space-lg);
+}
+
+.process-content h4 {
+    margin-bottom: var(--space-md);
+    font-size: 1.25rem;
+    color: var(--white);
+}
+
+.process-content p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Section Avantages */
+.advantages-section {
+    background-color: var(--blue-night);
+}
+
+.advantages-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+.advantages-list .advantage-item {
+    margin-bottom: var(--space-xl);
+    display: flex;
+    align-items: flex-start;
+}
+
+.advantages-list .advantage-item:last-child {
+    margin-bottom: 0;
+}
+
+.advantages-list .advantage-icon {
+    margin-right: var(--space-md);
+    color: var(--bright-orange);
+}
+
+.advantages-list h4 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+}
+
+.advantages-list p {
+    color: var(--text-secondary);
+}
+
+/* Section CTA Final */
+.cta-section {
+    background: var(--accent-gradient);
+    text-align: center;
+}
+
+.cta-section h3 {
+    margin-bottom: var(--space-md);
+}
+
+.cta-section p {
+    max-width: 500px;
+    margin: 0 auto var(--space-xl);
+}
+
+.cta-buttons .btn {
+    margin: 0 8px;
+}
+
+/* Responsive pour les solutions */
+@media (min-width: 768px) {
+    /* Pour tablettes et plus */
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr); /* Passe à 2 colonnes */
+    }
+}
+
+@media (min-width: 1500px) {
+    /* Pour écrans larges et plus */
+    .solutions-grid {
+        grid-template-columns: repeat(4, 1fr); /* Passe à 4 colonnes */
+    }
+}
+
+/* === RESPONSIVE MOBILE FIRST === */
+
+/* Mobile par défaut (0-767px) */
+.process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+.process-card {
+    padding: var(--space-lg);
+}
+
+.process-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+}
+
+.advantages-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+/* Tablette et + (≥768px) */
+@media (min-width: 768px) {
+    .process-card {
+        padding: var(--space-xl);
+    }
+    
+    .process-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+    
+    .advantages-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3xl);
+    }
+}

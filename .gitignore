@@ -1,0 +1,67 @@
+# WordPress Core
+/wp-admin/
+/wp-includes/
+/wp-content/index.php
+/wp-content/languages
+/wp-content/plugins/index.php
+/wp-content/themes/index.php
+
+# WordPress Config
+wp-config.php
+wp-config-local.php
+
+# Database
+*.sql
+*.sql.gz
+
+# Local by Flywheel
+/app/sql/
+/logs/
+/conf/
+
+# Node modules
+node_modules/
+/node_modules/
+
+# Build files
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.cache
+
+# Uploads (optionnel - décommentez si vous ne voulez pas versionner les uploads)
+# /wp-content/uploads/
+
+# Plugins WordPress (décommentez si vous ne voulez pas versionner les plugins tiers)
+# /wp-content/plugins/
+
+# Themes WordPress tiers (on garde seulement notre thème custom)
+/wp-content/themes/twenty*/
+
+# Cache
+/wp-content/cache/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+
+# Backup files
+*.backup
+*.back
+*.bck
+
+# Environment files
+.env
+.env.local
+.env.*.local

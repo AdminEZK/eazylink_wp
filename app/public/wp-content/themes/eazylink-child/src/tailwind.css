@@ -1,0 +1,154 @@
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Application du mode sombre avec dégradé principal sur tout le site */
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-night via-deep-purple to-accent-pink text-white min-h-screen;
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white;
+  }
+  
+  p, li, span {
+    @apply text-white/90;
+  }
+  
+  a:not(.btn-primary):not(.btn-secondary):not(.btn-outline) {
+    @apply text-bright-orange hover:text-white transition-colors;
+  }
+}
+
+/* Variantes de sections */
+@layer components {
+  /* Section avec fond semi-transparent */
+  .section-glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-lg;
+  }
+  
+  /* Section avec fond plus foncé */
+  .section-dark {
+    @apply bg-blue-night/70 backdrop-blur-sm border border-white/10 rounded-lg;
+  }
+  
+  /* Section avec fond plus clair */
+  .section-light {
+    @apply bg-white/20 backdrop-blur-md border border-white/30 rounded-lg;
+  }
+  
+  /* Section avec accent */
+  .section-accent {
+    @apply bg-gradient-to-r from-bright-orange/20 to-accent-pink/20 backdrop-blur-sm border border-bright-orange/30 rounded-lg;
+  }
+  
+  /* Conteneur de contenu */
+  .content-container {
+    @apply bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-lg border border-white/20;
+  }
+
+  /* Styles personnalisés qui utilisent les classes Tailwind */
+  .btn-primary {
+    @apply bg-gradient-to-r from-bright-orange to-accent-pink text-white py-4 px-10 rounded-xl font-semibold transition-all duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply shadow-md shadow-bright-orange/30 -translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-white/60 text-white py-4 px-10 rounded-xl font-semibold transition-all duration-300;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-white/10 border-bright-orange;
+  }
+  
+  .btn-outline {
+    @apply bg-transparent border border-bright-orange text-bright-orange py-4 px-10 rounded-xl font-semibold transition-all duration-300;
+  }
+  
+  .btn-outline:hover {
+    @apply bg-bright-orange text-white;
+  }
+  
+  .card {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg shadow-sm p-6 transition-all duration-300;
+  }
+  
+  .card:hover {
+    @apply shadow-lg -translate-y-1 bg-white/15;
+  }
+  
+  .card-title {
+    @apply text-white;
+  }
+  
+  .card-text {
+    @apply text-white/80;
+  }
+}
+
+/* Styles spécifiques pour le header et le footer */
+.header {
+  @apply bg-blue-night py-4 transition-all duration-300 border-0;
+}
+
+.header.scrolled-down {
+  @apply py-2 shadow-md bg-blue-night/95 backdrop-blur-sm;
+}
+
+.logo-img {
+  @apply h-10 w-auto transition-all duration-300;
+}
+
+.scrolled-down .logo-img {
+  @apply h-8;
+}
+
+.nav {
+  @apply hidden md:flex gap-6;
+}
+
+.nav-item {
+  @apply text-white font-medium transition-all duration-300 py-2 px-3 relative hover:text-bright-orange;
+}
+
+.nav-item.active {
+  @apply text-bright-orange;
+}
+
+.nav-item.active::after {
+  @apply content-[''] absolute bottom-0 left-3 right-3 h-0.5 bg-bright-orange;
+}
+
+.btn-header {
+  @apply py-2 px-6 rounded-full border border-white/60 hover:border-bright-orange;
+}
+
+.footer {
+  @apply bg-blue-night/80 backdrop-blur-md text-white py-12 pb-4 border-t border-white/10;
+}
+
+.footer h3 {
+  @apply text-xl mb-4;
+}
+
+.footer-link {
+  @apply text-white/80 hover:text-bright-orange hover:opacity-100 transition-all duration-300;
+}
+
+.social-icon {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white mr-2 transition-all duration-300 hover:bg-bright-orange hover:-translate-y-1;
+}
+
+.copyright-section {
+  @apply border-t border-white/10 mt-12 pt-4;
+}
+
+.legal-link {
+  @apply text-white/60 text-sm hover:text-bright-orange hover:opacity-100 transition-all duration-300;
+}

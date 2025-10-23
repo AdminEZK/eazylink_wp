@@ -1,0 +1,287 @@
+/* 
+ * Page 404 - Styles spécifiques
+ * Design EazyLink avec glassmorphism et animations
+ */
+
+/* SECTION 404 */
+.error-404-section {
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6rem 0 !important;
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.error-404-content {
+    text-align: center !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+/* ILLUSTRATION 404 */
+.error-404-illustration {
+    position: relative !important;
+    margin-bottom: 3rem !important;
+}
+
+.error-404-number {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 10rem !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    margin-bottom: 2rem !important;
+    animation: float 3s ease-in-out infinite !important;
+}
+
+.error-404-number .gradient-text {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FF7043 50%, #ff006e 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    filter: drop-shadow(0 10px 30px rgba(255, 112, 67, 0.3)) !important;
+}
+
+/* ÉLÉMENTS DÉCORATIFS ANIMÉS */
+.error-decoration {
+    position: absolute !important;
+    border-radius: 50% !important;
+    opacity: 0.3 !important;
+    filter: blur(60px) !important;
+    pointer-events: none !important;
+    animation: pulse 4s ease-in-out infinite !important;
+}
+
+.error-decoration-1 {
+    top: -50px !important;
+    left: 10% !important;
+    width: 150px !important;
+    height: 150px !important;
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+    animation-delay: 0s !important;
+}
+
+.error-decoration-2 {
+    top: 50% !important;
+    right: 10% !important;
+    width: 200px !important;
+    height: 200px !important;
+    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%) !important;
+    animation-delay: 1s !important;
+}
+
+.error-decoration-3 {
+    bottom: -50px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 180px !important;
+    height: 180px !important;
+    background: linear-gradient(135deg, #10B981 0%, #14B8A6 100%) !important;
+    animation-delay: 2s !important;
+}
+
+/* CONTENU TEXTE */
+.error-404-text {
+    margin-bottom: 3rem !important;
+}
+
+.error-404-title {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.2 !important;
+}
+
+.error-404-description {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.25rem !important;
+    line-height: 1.7 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+/* ACTIONS - BOUTONS */
+.error-404-actions {
+    display: flex !important;
+    gap: 1.5rem !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 4rem !important;
+}
+
+.error-404-actions .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 1rem 2rem !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+.error-404-actions .btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    transition: transform 0.3s ease !important;
+}
+
+.error-404-actions .btn:hover svg {
+    transform: translateX(-3px) !important;
+}
+
+.error-404-actions .btn-secondary:hover svg {
+    transform: translateY(-3px) !important;
+}
+
+/* SUGGESTIONS DE NAVIGATION */
+.error-404-suggestions {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 2.5rem !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+}
+
+.error-404-suggestions h3 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 2rem !important;
+}
+
+.suggestions-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.5rem !important;
+}
+
+.suggestion-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
+    padding: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.suggestion-card:hover {
+    transform: translateY(-5px) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.suggestion-card svg {
+    width: 40px !important;
+    height: 40px !important;
+    stroke: #FF7043 !important;
+    transition: all 0.3s ease !important;
+}
+
+.suggestion-card:hover svg {
+    stroke: #ff006e !important;
+    transform: scale(1.1) rotate(5deg) !important;
+}
+
+.suggestion-card span {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-align: center !important;
+}
+
+/* ANIMATIONS */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) !important;
+    }
+    50% {
+        transform: translateY(-20px) !important;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.3 !important;
+        transform: scale(1) !important;
+    }
+    50% {
+        opacity: 0.5 !important;
+        transform: scale(1.1) !important;
+    }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .suggestions-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .error-404-section {
+        padding: 4rem 0 !important;
+    }
+    
+    .error-404-number {
+        font-size: 6rem !important;
+    }
+    
+    .error-404-title {
+        font-size: 2rem !important;
+    }
+    
+    .error-404-description {
+        font-size: 1.1rem !important;
+    }
+    
+    .error-404-actions {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .error-404-actions .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .error-404-suggestions {
+        padding: 2rem !important;
+    }
+    
+    .suggestions-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .error-decoration {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-404-number {
+        font-size: 4rem !important;
+    }
+    
+    .error-404-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .error-404-description {
+        font-size: 1rem !important;
+    }
+}

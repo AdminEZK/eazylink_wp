@@ -1,0 +1,1887 @@
+/* ==========================================================================
+   Front Page - EazyLink
+   ========================================================================== */
+
+/* 1. VARIABLES ET CONFIGURATION GÉNÉRALE */
+:root {
+    --blue-night: #1a1a3e;
+    --violet-deep: #2d1b69;
+    --orange-vif: #FF7043;
+    --rose-accent: #ff006e;
+    --white: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --violet-interactive: #7c3aed; /* Couleur pour les icônes spécifiques */
+
+    --gradient-primary: linear-gradient(135deg, var(--orange-vif) 0%, var(--rose-accent) 100%);
+    --gradient-background: linear-gradient(135deg, var(--blue-night) 0%, var(--violet-deep) 50%, var(--rose-accent) 100%);
+    --gradient-text: linear-gradient(135deg, var(--white) 0%, var(--orange-vif) 50%, var(--rose-accent) 100%);
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 48px;
+    --space-xxl: 96px;
+}
+
+/* Reset spécifique pour la front page */
+body.home,
+body.front-page {
+    font-family: var(--font-body) !important;
+    color: var(--white) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Le background gradient est géré par #page dans design-system.css */
+
+/* Styles spécifiques pour éviter les conflits */
+
+/* Forcer les titres h2 en blanc sur la home page */
+body.home h2,
+body.front-page h2 {
+    color: var(--white) !important;
+    font-family: var(--font-title) !important;
+}
+
+/* SUPPRIMÉ : Styles header spécifiques - Le header doit être identique sur toutes les pages */
+/* Les styles du header sont gérés par design-system.css de manière uniforme */
+
+body.home *,
+body.front-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.home html,
+body.front-page html {
+    scroll-behavior: smooth;
+}
+
+/* MODIFICATION: Largeur du conteneur principal */
+body.home .container,
+body.front-page .container {
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--space-lg) !important;
+}
+
+/* Exception : Le header a un container plus large */
+body.home .header .container,
+body.front-page .header .container {
+    max-width: 1600px !important;
+}
+
+body.home h1,
+body.home h2,
+body.home h3,
+body.home h4,
+body.front-page h1,
+body.front-page h2,
+body.front-page h3,
+body.front-page h4 {
+    font-family: var(--font-title) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+}
+
+body.home h1,
+body.front-page h1 {
+    font-size: 3.5rem !important;
+}
+
+body.home h2,
+body.front-page h2 {
+    font-size: 2.25rem !important;
+    text-align: center !important;
+    margin-bottom: var(--space-xl) !important;
+}
+
+body.home h3,
+body.front-page h3 {
+    font-size: 1.875rem !important;
+}
+
+body.home h4,
+body.front-page h4 {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+}
+
+body.home section,
+body.front-page section {
+    padding: var(--space-xxl) 0 !important;
+}
+
+/* 2. COMPOSANTS RÉUTILISABLES */
+
+/* Boutons - Style inspiré de l'image fournie */
+body.home .btn,
+body.front-page .btn {
+    display: inline-block !important;
+    padding: 18px 48px !important; /* Padding plus généreux */
+    border-radius: 60px !important; /* Bordures très arrondies comme dans l'image */
+    text-decoration: none !important;
+    font-weight: 600 !important; /* Poids de police ajusté */
+    font-family: var(--font-title) !important;
+    font-size: 1.1rem !important; /* Taille de police légèrement plus grande */
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    border: none !important;
+}
+
+body.home .btn-primary,
+body.front-page .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important; /* Dégradé orange-rose exact */
+    color: var(--white) !important;
+    box-shadow: 0 8px 25px rgba(255, 112, 67, 0.3) !important; /* Ombre douce */
+}
+
+body.home .btn-primary:hover,
+body.front-page .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 30px rgba(255, 112, 67, 0.4) !important;
+    color: var(--white) !important;
+    background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important; /* Dégradé légèrement plus clair au hover */
+}
+
+body.home .btn-secondary,
+body.front-page .btn-secondary {
+    background: transparent !important;
+    color: var(--white) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+body.home .btn-secondary:hover,
+body.front-page .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: var(--white) !important;
+    color: var(--white) !important;
+}
+
+/* Texte en dégradé */
+body.home .gradient-text,
+body.front-page .gradient-text {
+    background: var(--gradient-text) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Introduction de section */
+body.home .section-intro,
+body.front-page .section-intro {
+    max-width: 800px !important;
+    margin: 0 auto var(--space-xl) !important;
+    text-align: center !important;
+    color: var(--text-secondary) !important;
+}
+
+body.home .section-cta,
+body.front-page .section-cta {
+    text-align: center !important;
+    margin-top: var(--space-xl) !important;
+}
+
+/* Style des boutons dans les sections CTA - identique au hero */
+body.home .section-cta .btn,
+body.front-page .section-cta .btn {
+    padding: 18px 48px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    border-radius: 60px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    min-width: 220px !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Bouton secondaire dans les sections - style du hero sans ombre */
+body.home .section-cta .btn-secondary,
+body.front-page .section-cta .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    color: var(--white) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.home .section-cta .btn-secondary:hover,
+body.front-page .section-cta .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--white) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Effet de reflet au hover sur bouton secondaire des sections */
+body.home .section-cta .btn-secondary::before,
+body.front-page .section-cta .btn-secondary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.home .section-cta .btn-secondary:hover::before,
+body.front-page .section-cta .btn-secondary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Bouton primaire dans les sections - style du hero sans ombre */
+body.home .section-cta .btn-primary,
+body.front-page .section-cta .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+    color: var(--white) !important;
+    border: none !important;
+}
+
+body.home .section-cta .btn-primary:hover,
+body.front-page .section-cta .btn-primary:hover {
+    background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Effet de reflet au hover sur bouton primaire des sections */
+body.home .section-cta .btn-primary::before,
+body.front-page .section-cta .btn-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.home .section-cta .btn-primary:hover::before,
+body.front-page .section-cta .btn-primary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Cartes harmonisées avec le design Solutions/Experts */
+body.home .service-card,
+body.home .persona-card,
+body.front-page .service-card,
+body.front-page .persona-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: var(--space-xl) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Capability cards sans animations */
+body.home .capability-card,
+body.front-page .capability-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: var(--space-xl) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+body.home .service-card:hover,
+body.home .persona-card:hover,
+body.front-page .service-card:hover,
+body.front-page .persona-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: var(--orange-vif) !important;
+}
+
+
+body.home .service-card h4,
+body.home .persona-card h4,
+body.home .capability-card h4,
+body.home .article-card h4,
+body.front-page .service-card h4,
+body.front-page .persona-card h4,
+body.front-page .capability-card h4,
+body.front-page .article-card h4 {
+    margin-bottom: var(--space-md) !important;
+}
+
+/* Couleur blanche pour les h4 des sections personas, capabilities et articles */
+body.home .persona-card h4,
+body.home .capability-card h4,
+body.home .article-card h4,
+body.front-page .persona-card h4,
+body.front-page .capability-card h4,
+body.front-page .article-card h4 {
+    color: var(--white) !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    font-family: var(--font-title) !important;
+}
+
+body.home .service-card p,
+body.home .persona-card p,
+body.home .capability-card p,
+body.front-page .service-card p,
+body.front-page .persona-card p,
+body.front-page .capability-card p {
+    color: var(--text-secondary) !important;
+    flex-grow: 1 !important;
+}
+
+/* Liens des cartes harmonisés */
+body.home .service-card .card-link,
+body.home .persona-card a,
+body.front-page .service-card .card-link,
+body.front-page .persona-card a {
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    margin-top: var(--space-md) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-sm) !important;
+}
+
+body.home .service-card .card-link:hover,
+body.home .persona-card a:hover,
+body.front-page .service-card .card-link:hover,
+body.front-page .persona-card a:hover {
+    color: var(--orange-vif) !important;
+}
+
+/* Icônes harmonisées pour toutes les cartes */
+body.home .service-card .card-icon,
+body.home .capability-card .icon,
+body.front-page .service-card .card-icon,
+body.front-page .capability-card .icon {
+    width: 56px !important;
+    height: 56px !important;
+    margin: 0 auto var(--space-lg) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+}
+
+body.home .service-card .card-icon svg,
+body.home .capability-card .icon svg,
+body.front-page .service-card .card-icon svg,
+body.front-page .capability-card .icon svg {
+    stroke: var(--orange-vif) !important;
+    width: 28px !important;
+    height: 28px !important;
+}
+
+/* Articles */
+body.home .article-card,
+body.front-page .article-card {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease !important;
+}
+
+body.home .article-card:hover,
+body.front-page .article-card:hover {
+    transform: translateY(-5px) !important;
+}
+
+body.home .article-card img,
+body.front-page .article-card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+}
+
+body.home .article-card-content,
+body.front-page .article-card-content {
+    padding: var(--space-lg) !important;
+}
+
+body.home .article-card-content .category,
+body.front-page .article-card-content .category {
+    color: var(--orange-vif) !important;
+    font-weight: 700 !important;
+    font-size: 0.8rem !important;
+    text-transform: uppercase !important;
+    margin-bottom: var(--space-sm) !important;
+}
+
+body.home .article-card-content h4,
+body.front-page .article-card-content h4 {
+    margin-bottom: var(--space-md) !important;
+    font-size: 1.1rem !important;
+}
+
+body.home .article-card-content p,
+body.front-page .article-card-content p {
+    font-size: 0.9rem !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: var(--space-lg) !important;
+}
+
+body.home .article-card-content a,
+body.front-page .article-card-content a {
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+}
+
+body.home .article-card-content a:hover,
+body.front-page .article-card-content a:hover {
+    color: var(--orange-vif) !important;
+}
+
+/* Supprimé - déjà défini plus bas */
+
+body.home .section-header,
+body.front-page .section-header {
+    text-align: center !important;
+    margin-bottom: var(--space-xl) !important;
+}
+
+body.home .section-header h2,
+body.front-page .section-header h2 {
+    font-size: 2.25rem !important;
+    margin-bottom: var(--space-md) !important;
+    color: var(--white) !important;
+    font-family: var(--font-title) !important;
+}
+
+body.home .section-header p,
+body.front-page .section-header p {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 1.1rem !important;
+    line-height: 1.7 !important;
+}
+
+/* FAQ Section - Laisser le design system faire son travail */
+/* Aucun style spécifique - utilise le design system par défaut */
+
+/* 3. SECTIONS SPÉCIFIQUES (LAYOUTS DE GRILLE) */
+
+/* Hero Section */
+body.home .hero-section,
+body.home .accueil-hero-section,
+body.front-page .hero-section,
+body.front-page .accueil-hero-section {
+    min-height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: var(--space-xxl) 0 !important;
+    background: var(--gradient-background) !important;
+}
+
+/* Spécifique: padding bas 20px pour l'accueil-hero-section */
+body.home .accueil-hero-section,
+body.front-page .accueil-hero-section {
+    padding-bottom: 20px !important;
+}
+
+/* Hero Grid Layout */
+body.home .hero-grid,
+body.front-page .hero-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Mobile first: 1 colonne */
+    gap: var(--space-xl) !important;
+    align-items: center !important;
+}
+
+/* Hero Content */
+body.home .hero-content,
+body.front-page .hero-content {
+    text-align: center !important;
+}
+
+body.home .hero-content h1,
+body.home .accueil-hero-section h1,
+body.front-page .hero-content h1,
+body.front-page .accueil-hero-section h1 {
+    margin-bottom: var(--space-lg) !important;
+}
+
+body.home .hero-content p,
+body.home .accueil-hero-section p,
+body.front-page .hero-content p,
+body.front-page .accueil-hero-section p {
+    margin-bottom: var(--space-xl) !important;
+    font-size: 1.1rem !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Hero Image */
+body.home .hero-image,
+body.front-page .hero-image {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+body.home .hero-image img,
+body.front-page .hero-image img {
+    width: 100% !important;
+    max-width: 500px !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.3s ease !important;
+}
+
+body.home .hero-image img:hover,
+body.front-page .hero-image img:hover {
+    transform: translateY(-10px) !important;
+}
+
+/* Hero Buttons - Style mis en avant selon le design system */
+body.home .hero-buttons,
+body.front-page .hero-buttons {
+    margin-bottom: var(--space-xl) !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: var(--space-lg) !important;
+    flex-wrap: wrap !important;
+}
+
+body.home .hero-buttons .btn,
+body.front-page .hero-buttons .btn {
+    margin: 0 !important;
+    padding: 20px 50px !important; /* Padding encore plus généreux pour le hero */
+    font-size: 1.15rem !important; /* Taille de police plus grande pour le hero */
+    font-weight: 600 !important; /* Cohérent avec le style général */
+    border-radius: 60px !important; /* Bordures très arrondies comme dans l'image */
+    min-width: 240px !important; /* Largeur minimale pour consistance */
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Bouton primaire mis en avant - Style de l'image sans ombre */
+body.home .hero-buttons .btn-primary,
+body.front-page .hero-buttons .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important; /* Dégradé exact de l'image */
+    border: none !important;
+    color: var(--white) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body.home .hero-buttons .btn-primary:hover,
+body.front-page .hero-buttons .btn-primary:hover {
+    transform: translateY(-2px) !important; /* Effet de levée plus subtil */
+    color: var(--white) !important;
+    background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important; /* Dégradé légèrement plus clair au hover */
+}
+
+/* Effet de reflet au hover sur le bouton primaire */
+body.home .hero-buttons .btn-primary::before,
+body.front-page .hero-buttons .btn-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.home .hero-buttons .btn-primary:hover::before,
+body.front-page .hero-buttons .btn-primary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Bouton secondaire mis en avant sans ombre */
+body.home .hero-buttons .btn-secondary,
+body.front-page .hero-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important; /* Background légèrement visible */
+    border: 2px solid rgba(255, 255, 255, 0.5) !important; /* Bordure plus visible */
+    color: var(--white) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+body.home .hero-buttons .btn-secondary:hover,
+body.front-page .hero-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: var(--white) !important;
+    color: var(--white) !important;
+    transform: translateY(-2px) !important; /* Effet de levée cohérent */
+}
+
+/* Effet de reflet au hover sur le bouton secondaire */
+body.home .hero-buttons .btn-secondary::before,
+body.front-page .hero-buttons .btn-secondary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.home .hero-buttons .btn-secondary:hover::before,
+body.front-page .hero-buttons .btn-secondary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* Hero Key Figures - Chiffres clés dans le hero */
+body.home .hero-key-figures,
+body.front-page .hero-key-figures {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-lg) !important;
+    margin-top: var(--space-xl) !important;
+}
+
+body.home .hero-key-figures .key-figure-item,
+body.front-page .hero-key-figures .key-figure-item {
+    text-align: center !important;
+}
+
+body.home .hero-key-figures .key-figure-item h3,
+body.front-page .hero-key-figures .key-figure-item h3 {
+    font-size: 2.5rem !important;
+    margin-bottom: var(--space-sm) !important;
+    color: var(--orange-vif) !important;
+    font-weight: 700 !important;
+}
+
+body.home .hero-key-figures .key-figure-item p,
+body.front-page .hero-key-figures .key-figure-item p {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+}
+
+body.home .hero-key-figures .key-figure-item .source,
+body.front-page .hero-key-figures .key-figure-item .source {
+    display: block !important;
+    color: #9CA3AF !important;
+    font-size: 0.75rem !important;
+    margin-top: var(--space-sm) !important;
+    font-style: italic !important;
+    opacity: 0.9 !important;
+}
+
+/* NOUVELLE SECTION: Chiffres Clés */
+body.home .key-figures-section,
+body.front-page .key-figures-section {
+    background-color: var(--blue-night) !important;
+    padding: var(--space-xl) 0 !important;
+}
+
+body.home .key-figures-grid,
+body.front-page .key-figures-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-lg) !important;
+    text-align: center !important;
+}
+
+body.home .key-figure-item h3,
+body.front-page .key-figure-item h3 {
+    font-size: 3rem !important;
+    margin-bottom: var(--space-sm) !important;
+    color: var(--orange-vif) !important;
+}
+
+body.home .key-figure-item p,
+body.front-page .key-figure-item p {
+    color: var(--text-secondary) !important;
+    font-size: 1.1rem !important;
+}
+
+/* Double Dimension - Style adapté à l'image */
+body.home .double-dimension-section,
+body.front-page .double-dimension-section {
+    background-color: var(--blue-night) !important;
+    padding: var(--space-xxl) 0 !important;
+}
+
+body.home .dimension-grid,
+body.front-page .dimension-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Mobile: 1 colonne */
+    gap: var(--space-xl) !important;
+    align-items: flex-start !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+body.home .dimension-item,
+body.front-page .dimension-item {
+    text-align: center !important;
+    padding: var(--space-lg) !important; /* Mobile: padding réduit */
+}
+
+body.home .dimension-icon,
+body.front-page .dimension-icon {
+    width: 70px !important; /* Mobile: taille réduite */
+    height: 70px !important;
+    margin: 0 auto var(--space-lg) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    position: relative !important;
+}
+
+/* Icône stratégique - Rouge/Rose */
+body.home .dimension-icon.strategic,
+body.front-page .dimension-icon.strategic {
+    background: linear-gradient(135deg, #ff006e 0%, #ff4081 100%) !important;
+    box-shadow: 0 8px 32px rgba(255, 0, 110, 0.3) !important;
+}
+
+/* Icône opérationnelle - Orange/Rouge */
+body.home .dimension-icon.operational,
+body.front-page .dimension-icon.operational {
+    background: linear-gradient(135deg, #ff7043 0%, #ff5722 100%) !important;
+    box-shadow: 0 8px 32px rgba(255, 112, 67, 0.3) !important;
+}
+
+body.home .dimension-icon svg,
+body.front-page .dimension-icon svg {
+    stroke: var(--white) !important;
+    width: 32px !important; /* Mobile: taille réduite */
+    height: 32px !important;
+    stroke-width: 2 !important;
+}
+
+body.home .dimension-item h3,
+body.front-page .dimension-item h3 {
+    font-size: 1.5rem !important; /* Mobile: taille réduite */
+    margin-bottom: var(--space-lg) !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+}
+
+body.home .dimension-item p,
+body.front-page .dimension-item p {
+    color: var(--text-secondary) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+}
+
+/* Grilles harmonisées avec les pages Solutions/Experts */
+body.home .personas-grid,
+body.home .solutions-grid,
+body.home .capabilities-grid,
+body.home .articles-grid,
+body.front-page .personas-grid,
+body.front-page .solutions-grid,
+body.front-page .capabilities-grid,
+body.front-page .articles-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Mobile First: 1 colonne par défaut */
+    gap: var(--space-lg) !important;
+}
+
+/* Section Personas - Style avec dégradé de la charte graphique EazyLink - FORCE */
+body.home section.personas-section,
+body.front-page section.personas-section {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+    background-color: #1a1a3e !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: var(--space-xxl) 0 !important;
+}
+
+/* Règle supplémentaire pour forcer le background */
+section.personas-section {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+}
+
+/* Effet de dégradé supplémentaire avec les couleurs de la charte */
+body.home .personas-section::before,
+body.front-page .personas-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: radial-gradient(ellipse at center, rgba(255, 112, 67, 0.1) 0%, rgba(255, 0, 110, 0.05) 50%, transparent 70%) !important;
+    pointer-events: none !important;
+}
+
+/* Container avec position relative pour le z-index */
+body.home .personas-section .container,
+body.front-page .personas-section .container {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Laisser le design system gérer les FAQ */
+
+body.home .capabilities-section,
+body.home .articles-section,
+body.front-page .capabilities-section,
+body.front-page .articles-section {
+    background-color: var(--blue-night) !important;
+}
+
+body.home .cta-section,
+body.front-page .cta-section {
+    background: var(--gradient-primary) !important;
+    text-align: center !important;
+}
+
+body.home .cta-section h3,
+body.front-page .cta-section h3 {
+    margin-bottom: var(--space-md) !important;
+}
+
+body.home .cta-section p,
+body.front-page .cta-section p {
+    max-width: 500px !important;
+    margin: 0 auto var(--space-xl) !important;
+}
+
+/* Styles spécifiques pour harmoniser avec Solutions/Experts */
+body.home .service-card .card-icon svg,
+body.front-page .service-card .card-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: var(--orange-vif) !important;
+}
+
+body.home .service-card .card-link svg,
+body.front-page .service-card .card-link svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: currentColor !important;
+    transition: transform 0.2s ease !important;
+}
+
+body.home .service-card:hover .card-link svg,
+body.front-page .service-card:hover .card-link svg {
+    transform: translateX(3px) !important;
+}
+
+/* NOUVEAUX COMPOSANTS DE LA PAGE EXPERTS */
+
+/* Experts Grid - Style adapté à l'image avec 4 colonnes */
+body.home .experts-grid,
+body.front-page .experts-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: var(--space-lg) !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+/* Expert Cards - Style adapté à l'image avec dégradé */
+body.home .expert-card,
+body.front-page .expert-card {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 20px !important;
+    padding: var(--space-xl) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Effet de brillance subtil sur les cartes */
+body.home .expert-card::before,
+body.front-page .expert-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+body.home .expert-card:hover::before,
+body.front-page .expert-card:hover::before {
+    left: 100% !important;
+}
+
+body.home .expert-card:hover,
+body.front-page .expert-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(255, 112, 67, 0.3) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Suppression des icônes pour correspondre à l'image */
+body.home .expert-card .card-icon,
+body.front-page .expert-card .card-icon {
+    display: none !important;
+}
+
+body.home .expert-card h4,
+body.front-page .expert-card h4 {
+    margin-bottom: var(--space-md) !important;
+    font-size: 1.4rem !important;
+    color: var(--white) !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Masquer les informations sectorielles pour correspondre à l'image */
+body.home .expert-card .sector-info,
+body.front-page .expert-card .sector-info {
+    display: none !important;
+}
+
+body.home .expert-card p,
+body.front-page .expert-card p {
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin-bottom: var(--space-xl) !important;
+    flex-grow: 1 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* Liens CTA en orange comme demandé */
+body.home .expert-card .card-link,
+body.front-page .expert-card .card-link {
+    color: #FF7043 !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-sm) !important;
+    font-size: 0.9rem !important;
+    position: relative !important;
+    z-index: 2 !important;
+    transition: all 0.3s ease !important;
+}
+
+body.home .expert-card .card-link:hover,
+body.front-page .expert-card .card-link:hover {
+    color: #ff8a65 !important;
+    transform: translateX(5px) !important;
+}
+
+body.home .expert-card .card-link svg,
+body.front-page .expert-card .card-link svg {
+    width: 14px !important;
+    height: 14px !important;
+    transition: transform 0.2s ease !important;
+    stroke: currentColor !important;
+}
+
+body.home .expert-card:hover .card-link svg,
+body.front-page .expert-card:hover .card-link svg {
+    transform: translateX(3px) !important;
+}
+
+/* Process Section - Style de la page Experts */
+body.home .process-section,
+body.front-page .process-section {
+    background-color: var(--violet-deep) !important;
+}
+
+body.home .process-section h2,
+body.front-page .process-section h2 {
+    text-align: center !important;
+    margin-bottom: var(--space-xl) !important;
+}
+
+body.home .process-grid,
+body.front-page .process-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: var(--space-xl) !important;
+    position: relative !important;
+}
+
+body.home .process-step,
+body.front-page .process-step {
+    text-align: center !important;
+}
+
+body.home .process-step .step-number,
+body.front-page .process-step .step-number {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    font-family: var(--font-title) !important;
+    color: var(--orange-vif) !important;
+    margin-bottom: var(--space-md) !important;
+}
+
+body.home .process-step h3,
+body.front-page .process-step h3 {
+    font-size: 1.5rem !important;
+    margin-bottom: var(--space-md) !important;
+}
+
+body.home .process-step p,
+body.front-page .process-step p {
+    color: var(--text-secondary) !important;
+}
+
+/* Support Section - Style de la page Experts */
+body.home .support-section,
+body.front-page .support-section {
+    background-color: var(--blue-night) !important;
+}
+
+body.home .support-layout,
+body.front-page .support-layout {
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* Mobile: 1 colonne */
+    gap: var(--space-xl) !important;
+    align-items: center !important;
+}
+
+body.home .support-content h2,
+body.front-page .support-content h2 {
+    text-align: left !important;
+    margin-bottom: var(--space-md) !important;
+}
+
+body.home .support-content p,
+body.front-page .support-content p {
+    color: var(--text-secondary) !important;
+}
+
+body.home .support-list .support-item,
+body.front-page .support-list .support-item {
+    margin-bottom: var(--space-xl) !important;
+}
+
+body.home .support-list .support-item:last-child,
+body.front-page .support-list .support-item:last-child {
+    margin-bottom: 0 !important;
+}
+
+body.home .support-list h4,
+body.front-page .support-list h4 {
+    font-size: 1.25rem !important;
+    margin-bottom: 8px !important;
+    color: var(--orange-vif) !important;
+}
+
+body.home .support-list p,
+body.front-page .support-list p {
+    color: var(--text-secondary) !important;
+}
+
+/* CTA Section - Style harmonisé avec la page Experts */
+body.home .cta-section,
+body.front-page .cta-section {
+    background: var(--gradient-primary) !important;
+    text-align: center !important;
+}
+
+body.home .cta-section h3,
+body.front-page .cta-section h3 {
+    margin-bottom: var(--space-md) !important;
+}
+
+body.home .cta-section p,
+body.front-page .cta-section p {
+    max-width: 500px !important;
+    margin: 0 auto var(--space-xl) !important;
+}
+
+body.home .cta-buttons,
+body.front-page .cta-buttons {
+    display: flex !important;
+    justify-content: center !important;
+    gap: var(--space-md) !important;
+    flex-wrap: wrap !important;
+}
+
+body.home .cta-buttons .btn,
+body.front-page .cta-buttons .btn {
+    margin: 0 !important;
+}
+
+body.home .cta-buttons .btn-primary,
+body.front-page .cta-buttons .btn-primary {
+    background: var(--white) !important;
+    color: var(--blue-night) !important;
+    border: none !important;
+}
+
+body.home .cta-buttons .btn-primary:hover,
+body.front-page .cta-buttons .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: var(--blue-night) !important;
+    transform: translateY(-3px) !important;
+}
+
+body.home .cta-buttons .btn-secondary,
+body.front-page .cta-buttons .btn-secondary {
+    background: transparent !important;
+    color: var(--white) !important;
+    border: 2px solid var(--white) !important;
+}
+
+body.home .cta-buttons .btn-secondary:hover,
+body.front-page .cta-buttons .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* 4. RESPONSIVE DESIGN - MOBILE FIRST STRICT */
+/* ============================================= */
+/* Breakpoints: 768px (Tablette) | 1200px (Desktop) | 1500px (Large Desktop) */
+
+/* === MOBILE PAR DÉFAUT (0-767px) === */
+/* Tous les styles mobile sont définis dans les sections ci-dessus */
+/* Pas de media query nécessaire pour mobile */
+
+/* === TABLETTE ET + (≥768px) === */
+@media (min-width: 768px) {
+    /* Typographie Tablette */
+    body.home h1,
+    body.front-page h1 {
+        font-size: 3rem !important;
+    }
+    
+    body.home h2,
+    body.front-page h2 {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Espacements Tablette */
+    body.home section,
+    body.front-page section {
+        padding: var(--space-xl) 0 !important;
+    }
+
+    /* Hero Section - 2 colonnes */
+    body.home .hero-grid,
+    body.front-page .hero-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--space-xxl) !important;
+    }
+
+    body.home .hero-content,
+    body.front-page .hero-content {
+        text-align: left !important;
+    }
+
+    /* Hero Key Figures - 3 colonnes */
+    body.home .hero-key-figures,
+    body.front-page .hero-key-figures {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: var(--space-lg) !important;
+    }
+
+    body.home .hero-key-figures .key-figure-item,
+    body.front-page .hero-key-figures .key-figure-item {
+        text-align: left !important;
+    }
+    
+    /* Hero Buttons - Alignement gauche */
+    body.home .hero-buttons,
+    body.front-page .hero-buttons {
+        justify-content: flex-start !important;
+        gap: var(--space-md) !important;
+        flex-direction: row !important; /* Override mobile column */
+    }
+    
+    body.home .hero-buttons .btn,
+    body.front-page .hero-buttons .btn {
+        min-width: 200px !important;
+        width: auto !important; /* Override mobile 100% */
+        max-width: none !important; /* Override mobile max-width */
+        padding: 16px 40px !important;
+        font-size: 1.05rem !important;
+    }
+
+    /* Key Figures Grid - 3 colonnes */
+    body.home .key-figures-grid,
+    body.front-page .key-figures-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    /* Personas & Articles - 2 colonnes */
+    body.home .personas-grid,
+    body.home .articles-grid,
+    body.front-page .personas-grid,
+    body.front-page .articles-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    /* Solutions & Capabilities - 3 colonnes */
+    body.home .solutions-grid,
+    body.home .capabilities-grid,
+    body.front-page .solutions-grid,
+    body.front-page .capabilities-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    /* Dimension Grid - 2 colonnes */
+    body.home .dimension-grid,
+    body.front-page .dimension-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--space-xl) !important;
+    }
+    
+    body.home .dimension-item,
+    body.front-page .dimension-item {
+        padding: var(--space-xl) !important; /* Override mobile */
+    }
+    
+    body.home .dimension-icon,
+    body.front-page .dimension-icon {
+        width: 80px !important; /* Override mobile 70px */
+        height: 80px !important;
+    }
+    
+    body.home .dimension-icon svg,
+    body.front-page .dimension-icon svg {
+        width: 36px !important; /* Override mobile 32px */
+        height: 36px !important;
+    }
+    
+    body.home .dimension-item h3,
+    body.front-page .dimension-item h3 {
+        font-size: 1.75rem !important; /* Override mobile 1.5rem */
+    }
+    
+    /* Experts Grid - 2 colonnes */
+    body.home .experts-grid,
+    body.front-page .experts-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--space-md) !important;
+    }
+    
+    body.home .expert-card,
+    body.front-page .expert-card {
+        padding: var(--space-xl) !important; /* Override mobile var(--space-lg) */
+    }
+    
+    body.home .expert-card h4,
+    body.front-page .expert-card h4 {
+        font-size: 1.4rem !important; /* Override mobile 1.2rem */
+    }
+    
+    /* Process Grid - 3 colonnes */
+    body.home .process-grid,
+    body.front-page .process-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    /* Support Layout - 2 colonnes */
+    body.home .support-layout,
+    body.front-page .support-layout {
+        grid-template-columns: 1fr 1fr !important;
+        gap: var(--space-xxl) !important;
+    }
+    
+    /* CTA Buttons - Row layout */
+    body.home .cta-buttons,
+    body.front-page .cta-buttons {
+        flex-direction: row !important; /* Override mobile column */
+        align-items: center !important;
+    }
+    
+    body.home .cta-buttons .btn,
+    body.front-page .cta-buttons .btn {
+        width: auto !important; /* Override mobile 100% */
+        max-width: none !important; /* Override mobile max-width */
+        margin-bottom: 0 !important; /* Override mobile margin */
+    }
+    
+    /* Touch Point - Desktop padding */
+    body.home .touch-point,
+    body.front-page .touch-point {
+        padding: 48px !important; /* Override mobile 24px */
+        margin: 48px 0 !important; /* Override mobile 24px */
+    }
+    
+    body.home .touch-point h2,
+    body.front-page .touch-point h2 {
+        font-size: 2rem !important; /* Override mobile 1.5rem */
+    }
+    
+    body.home .touch-point p,
+    body.front-page .touch-point p {
+        font-size: 1.1rem !important; /* Override mobile 1rem */
+    }
+    
+    body.home .touch-point-actions,
+    body.front-page .touch-point-actions {
+        flex-direction: row !important; /* Override mobile column */
+        align-items: center !important;
+    }
+    
+    body.home .touch-point-actions .btn,
+    body.front-page .touch-point-actions .btn {
+        width: auto !important; /* Override mobile 100% */
+        max-width: none !important; /* Override mobile max-width */
+    }
+}
+
+/* === DESKTOP ET + (≥1200px) === */
+@media (min-width: 1200px) {
+    /* Typographie Desktop */
+    body.home h1,
+    body.front-page h1 {
+        font-size: 3.5rem !important;
+    }
+    
+    body.home h2,
+    body.front-page h2 {
+        font-size: 2.75rem !important;
+    }
+    
+    /* Espacements Desktop */
+    body.home section,
+    body.front-page section {
+        padding: var(--space-xxl) 0 !important;
+    }
+
+    /* Hero Image - Taille optimale */
+    body.home .hero-image img,
+    body.front-page .hero-image img {
+        max-width: 600px !important;
+    }
+
+    /* Personas & Articles - 3 colonnes */
+    body.home .personas-grid,
+    body.home .articles-grid,
+    body.front-page .personas-grid,
+    body.front-page .articles-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    /* Solutions & Capabilities - Maintien 3 colonnes */
+    body.home .solutions-grid,
+    body.home .capabilities-grid,
+    body.front-page .solutions-grid,
+    body.front-page .capabilities-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+    
+    /* Experts Grid - 4 colonnes */
+    body.home .experts-grid,
+    body.front-page .experts-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: var(--space-lg) !important;
+    }
+}
+
+/* === LARGE DESKTOP ET + (≥1500px) === */
+@media (min-width: 1500px) {
+    /* Personas & Articles - 4 colonnes */
+    body.home .personas-grid,
+    body.home .articles-grid,
+    body.front-page .personas-grid,
+    body.front-page .articles-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    
+    /* Solutions - 4 colonnes */
+    body.home .solutions-grid,
+    body.front-page .solutions-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    
+    /* Experts Grid - Gap augmenté */
+    body.home .experts-grid,
+    body.front-page .experts-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: var(--space-xl) !important;
+    }
+}
+
+/* === TOUCH POINT COMPONENT FORCÉ (Design System) === */
+body.home .touch-point,
+body.front-page .touch-point {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 48px !important;
+    text-align: center !important;
+    margin: 48px 0 !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+}
+
+body.home .touch-point:hover,
+body.front-page .touch-point:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-2px) !important;
+}
+
+body.home .touch-point h2,
+body.front-page .touch-point h2 {
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 16px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+body.home .touch-point p,
+body.front-page .touch-point p {
+    font-size: 1.1rem !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 48px !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+body.home .touch-point .btn,
+body.front-page .touch-point .btn {
+    margin-top: 16px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 18px 48px !important;
+    border-radius: 60px !important;
+    font-weight: 600 !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    border: none !important;
+    font-family: 'Montserrat', sans-serif !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Touch Point Actions */
+body.home .touch-point-actions,
+body.front-page .touch-point-actions {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+    margin-top: 24px !important;
+}
+
+/* Boutons primaires dans touch point */
+body.home .touch-point .btn-primary,
+body.front-page .touch-point .btn-primary {
+    background: linear-gradient(135deg, #FF7043 0%, #ff006e 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+}
+
+body.home .touch-point .btn-primary:hover,
+body.front-page .touch-point .btn-primary:hover {
+    background: linear-gradient(135deg, #ff8a65 0%, #ff1a7a 100%) !important;
+    transform: translateY(-2px) !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+}
+
+/* Boutons secondaires dans touch point */
+body.home .touch-point .btn-secondary,
+body.front-page .touch-point .btn-secondary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #FFFFFF !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+body.home .touch-point .btn-secondary:hover,
+body.front-page .touch-point .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: #FFFFFF !important;
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Effet de reflet au hover sur boutons primaires */
+body.home .touch-point .btn-primary::before,
+body.front-page .touch-point .btn-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
+    transition: left 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+body.home .touch-point .btn-primary:hover::before,
+body.front-page .touch-point .btn-primary:hover::before {
+    left: 100% !important;
+    opacity: 1 !important;
+}
+
+/* === FAQ COMPONENT EXACT DU DESIGN SYSTEM DEMO === */
+body.home .faq-section,
+body.front-page .faq-section {
+    padding: 48px 0 !important;
+}
+
+body.home .faq-item,
+body.front-page .faq-item {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+body.home .faq-item[open],
+body.front-page .faq-item[open] {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.home .faq-item summary,
+body.front-page .faq-item summary {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    padding: 24px !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+body.home .faq-item summary::-webkit-details-marker,
+body.front-page .faq-item summary::-webkit-details-marker {
+    display: none !important;
+}
+
+body.home .faq-item summary::after,
+body.front-page .faq-item summary::after {
+    content: '+' !important;
+    font-size: 2.5rem !important;
+    color: #FF7043 !important;
+    transition: transform 0.3s ease !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+}
+
+body.home .faq-item[open] summary::after,
+body.front-page .faq-item[open] summary::after {
+    transform: rotate(45deg) !important;
+}
+
+body.home .faq-item .answer,
+body.front-page .faq-item .answer {
+    padding: 0 24px 24px 24px !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.7 !important;
+}
+
+body.home .faq-item .answer p,
+body.front-page .faq-item .answer p {
+    margin: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+}
+/* === FAQ COMPONENT (Design System Demo) === */
+body.home .faq-section,
+body.front-page .faq-section {
+    padding: 48px 0; /* var(--space-xl) */
+}
+
+body.home .faq-item,
+body.front-page .faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    margin-bottom: 16px; /* var(--space-md) */
+    transition: background-color 0.3s ease;
+}
+
+body.home .faq-item[open],
+body.front-page .faq-item[open] {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.home .faq-item summary,
+body.front-page .faq-item summary {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 24px; /* var(--space-lg) */
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF; /* var(--white) */
+    font-family: 'Montserrat', sans-serif; /* var(--font-heading) */
+}
+
+body.home .faq-item summary::-webkit-details-marker,
+body.front-page .faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+body.home .faq-item summary::after,
+body.front-page .faq-item summary::after {
+    content: '+';
+    font-size: 2.5rem;
+    color: #FF7043; /* var(--bright-orange) */
+    transition: transform 0.3s ease;
+    font-weight: 300;
+    line-height: 1;
+}
+
+body.home .faq-item[open] summary::after,
+body.front-page .faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+body.home .faq-item .answer,
+body.front-page .faq-item .answer {
+    padding: 0 24px 24px 24px; /* 0 var(--space-lg) var(--space-lg) var(--space-lg) */
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+}
+
+body.home .faq-item .answer p,
+body.front-page .faq-item .answer p {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* var(--font-body) */
+}
+
+body.home .faq-section a,
+body.front-page .faq-section a {
+    color: #FF7043; /* var(--bright-orange) */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+body.home .faq-section a:hover,
+body.front-page .faq-section a:hover {
+    color: #ff006e; /* var(--accent-pink) */
+}
+/* === FAQ SECTION BACKGROUND GRADIENT (Priorité élevée) === */
+body.home .faq-section,
+body.front-page .faq-section {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+    padding: 48px 0 !important;
+    position: relative !important;
+}
+
+body.home .faq-section::before,
+body.front-page .faq-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%) !important;
+    z-index: -1 !important;
+}
+/* === FAQ SUMMARY GLASSMORPHISM === */
+body.home .faq-item summary,
+body.front-page .faq-item summary {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 12px !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    padding: 24px !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s ease !important;
+}
+
+body.home .faq-item summary:hover,
+body.front-page .faq-item summary:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+body.home .faq-item[open] summary,
+body.front-page .faq-item[open] summary {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-color: rgba(255, 255, 255, 0.4) !important;
+}
+/* === FAQ ANSWER GLASSMORPHISM === */
+body.home .faq-item .answer,
+body.front-page .faq-item .answer {
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 0 0 12px 12px !important;
+    border-top: none !important;
+    padding: 0 24px 24px 24px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.7 !important;
+    margin-top: -1px !important;
+}
+
+body.home .faq-item .answer p,
+body.front-page .faq-item .answer p {
+    margin: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+body.home .faq-item .answer a,
+body.front-page .faq-item .answer a {
+    color: #FF7043 !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: color 0.3s ease !important;
+}
+
+body.home .faq-item .answer a:hover,
+body.front-page .faq-item .answer a:hover {
+    color: #ff006e !important;
+}
+/* === FAQ UNIFIED GLASSMORPHISM (Sans séparation) === */
+body.home .faq-item,
+body.front-page .faq-item {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 12px !important;
+    margin-bottom: 16px !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+body.home .faq-item[open],
+body.front-page .faq-item[open] {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.home .faq-item summary,
+body.front-page .faq-item summary {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    padding: 24px !important;
+    cursor: pointer !important;
+    list-style: none !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    color: #FFFFFF !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: all 0.3s ease !important;
+    margin: 0 !important;
+}
+
+body.home .faq-item .answer,
+body.front-page .faq-item .answer {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 24px 24px 24px !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    line-height: 1.7 !important;
+    margin: 0 !important;
+}
+/* === SUPPRESSION SÉPARATION BLEUE FAQ === */
+body.home .faq-item summary,
+body.front-page .faq-item summary {
+    border-bottom: none !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+body.home .faq-item .answer,
+body.front-page .faq-item .answer {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+}
+
+body.home .faq-item summary:focus,
+body.front-page .faq-item summary:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.home .faq-item summary:active,
+body.front-page .faq-item summary:active {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Suppression de toute bordure ou background par défaut des details/summary */
+body.home details,
+body.front-page details {
+    border: none !important;
+}
+
+body.home details summary,
+body.front-page details summary {
+    border: none !important;
+    background: none !important;
+}
+/* === CTA SECTION BACKGROUND CHANGE === */
+body.home .cta-section,
+body.front-page .cta-section {
+    background: #1a1a3e !important;
+    background-color: #1a1a3e !important;
+}

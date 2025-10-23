@@ -1,0 +1,21 @@
+{
+  "name": "website",
+  "type": "website",
+  "config": {
+    "url": "http://website.local/",
+    "username": "Admin",
+    "password": "Admin",
+    "apiBase": "/wp-json/wp/v2"
+  },
+  "servers": {
+    "wordpress": {
+      "command": "node",
+      "args": ["./wordpress-mcp-server.js"],
+      "env": {
+        "WP_URL": "http://website.local/",
+        "WP_USERNAME": "Admin",
+        "WP_PASSWORD": "Admin"
+      }
+    }
+  }
+}

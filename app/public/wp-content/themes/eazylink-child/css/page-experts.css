@@ -1,0 +1,247 @@
+/* CSS spécifique à la page des experts */
+
+/* 1. VARIABLES SPÉCIFIQUES EXPERTS (utilise les variables du design system) */
+:root {
+    /* Variables spécifiques aux cartes experts */
+    --expert-card-bg: rgba(255, 255, 255, 0.05);
+    --expert-card-border: rgba(255, 255, 255, 0.1);
+    --expert-card-hover-border: var(--bright-orange);
+    --violet-interactive: #7c3aed;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* 2. SECTIONS SPÉCIFIQUES EXPERTS */
+
+/* Section Hero des Experts */
+.experts-hero-section {
+    padding: var(--space-3xl) 0;
+    text-align: center;
+    background: var(--gradient-main);
+}
+
+.experts-hero-section h1 {
+    max-width: 800px;
+    margin: 0 auto var(--space-lg);
+}
+
+.experts-hero-section p {
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+/* Section Experts Grid */
+.experts-section {
+    background-color: var(--blue-night);
+}
+
+.experts-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.experts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.expert-card {
+    background: var(--expert-card-bg);
+    border: 1px solid var(--expert-card-border);
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.expert-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--expert-card-hover-border);
+}
+
+.expert-card .card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-gradient);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.expert-card .card-icon.violet {
+    background: rgba(124, 58, 237, 0.1);
+}
+
+.expert-card .card-icon svg {
+    stroke: var(--white);
+    width: 24px;
+    height: 24px;
+}
+
+.expert-card .card-icon.violet svg {
+    stroke: var(--violet-interactive);
+}
+
+.expert-card h4 {
+    margin-bottom: var(--space-sm);
+    font-size: 1.25rem;
+}
+
+.expert-card .sector-info {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.expert-card p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+}
+
+.expert-card .card-link {
+    color: var(--bright-orange);
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+}
+
+.expert-card .card-link svg {
+    margin-left: var(--space-sm);
+    width: 16px;
+    height: 16px;
+}
+
+/* Section Processus */
+.process-section {
+    background-color: var(--deep-purple);
+}
+
+.process-section h2 {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-xl);
+    position: relative;
+}
+
+.process-step {
+    text-align: center;
+}
+
+.process-step .step-number {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--bright-orange);
+    margin-bottom: var(--space-md);
+}
+
+.process-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.process-step p {
+    color: var(--text-secondary);
+}
+
+/* Section Support */
+.support-section {
+    background-color: var(--blue-night);
+}
+
+.support-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+.support-list .support-item {
+    margin-bottom: var(--space-xl);
+}
+
+.support-list .support-item:last-child {
+    margin-bottom: 0;
+}
+
+.support-list h4 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    color: var(--bright-orange);
+}
+
+.support-list p {
+    color: var(--text-secondary);
+}
+
+/* Section CTA Final */
+.cta-section {
+    background: var(--accent-gradient);
+    text-align: center;
+}
+
+.cta-section h3 {
+    margin-bottom: var(--space-md);
+}
+
+.cta-section p {
+    max-width: 500px;
+    margin: 0 auto var(--space-xl);
+}
+
+.cta-buttons .btn {
+    margin: 0 8px;
+}
+
+/* === RESPONSIVE EXPERTS - MOBILE FIRST === */
+
+/* Mobile par défaut (0-767px) */
+.support-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-buttons .btn {
+    margin: 8px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Tablette et + (≥768px) */
+@media (min-width: 768px) {
+    .support-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3xl);
+    }
+    
+    .cta-buttons {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        margin: 0 8px;
+        width: auto;
+        max-width: none;
+    }
+}

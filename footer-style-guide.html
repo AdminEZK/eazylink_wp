@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Style Guide - EazyLink</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="app/public/wp-content/themes/eazylink-child/css/design-system.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1a1a3e 0%, #2d1b69 50%, #ff006e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .guide-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        .guide-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .guide-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guide-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .component-section {
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            color: #a9b7c6;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .code-block .tag { color: #e8bf6a; }
+        .code-block .attr { color: #bababa; }
+        .code-block .value { color: #6a8759; }
+        .code-block .class { color: #ffc66d; }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #FF7043;
+            padding: 15px 20px;
+            margin: 20px 0;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .info-box strong {
+            color: #FF7043;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide-container">
+        <!-- Header du guide -->
+        <div class="guide-header">
+            <h1>📋 Footer Component - Style Guide</h1>
+            <p>Guide visuel du composant Footer EazyLink</p>
+        </div>
+
+        <!-- Section 1: Aperçu du Footer -->
+        <div class="component-section">
+            <h2 class="section-title">1. Aperçu du Footer Complet</h2>
+            
+            <footer class="footer site-footer text-white">
+                <div class="footer-container">
+                    <div class="footer-content">
+                        <!-- Colonne 1: Logo + Description -->
+                        <div class="footer-column footer-column-logo">
+                            <div class="footer-logo">
+                                <a href="/">
+                                    <img src="app/public/wp-content/images/logo EZK.png" alt="EazyLink" class="logo-img">
+                                </a>
+                            </div>
+                            <p class="footer-description">
+                                Nous aidons les entreprises à intégrer l'IA de manière stratégique et efficace pour transformer leurs opérations et stimuler leur croissance.
+                            </p>
+                        </div>
+                        
+                        <!-- Colonne 2: Navigation -->
+                        <div class="footer-column footer-column-nav">
+                            <h3>Navigation</h3>
+                            <ul class="footer-nav">
+                                <li><a href="/" class="footer-link">Accueil</a></li>
+                                <li><a href="/experts-ia/" class="footer-link">Expert IA</a></li>
+                                <li><a href="/nos-solutions-ia/" class="footer-link">Nos Solutions</a></li>
+                                <li><a href="/a-propos/" class="footer-link">About</a></li>
+                                <li><a href="/blog/" class="footer-link">Blog</a></li>
+                                <li><a href="/contact/" class="footer-link">Contact</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Colonne 3: Contact + Réseaux sociaux -->
+                        <div class="footer-column footer-column-contact">
+                            <h3>Contact</h3>
+                            <div class="footer-contact">
+                                <div class="contact-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="contact-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                    <a href="mailto:hello@eazylink.fr" class="footer-link">hello@eazylink.fr</a>
+                                </div>
+                            </div>
+                            
+                            <h3 class="footer-social-title">Suivez-nous</h3>
+                            <div class="social-icons">
+                                <a href="https://www.linkedin.com/company/eazylink" target="_blank" class="social-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="social-svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Copyright et liens légaux -->
+                    <div class="copyright-section">
+                        <div class="copyright-content">
+                            <div class="copyright">
+                                &copy; 2025 EazyLink. Tous droits réservés.
+                            </div>
+                            
+                            <div class="language-switcher">
+                                <!-- Sélecteur de langue Polylang -->
+                            </div>
+                            
+                            <div class="legal-links">
+                                <a href="/mentions-legales/" class="legal-link">Mentions Légales</a>
+                                <a href="/politique-de-confidentialite/" class="legal-link">Politique de Confidentialité</a>
+                                <a href="/cgv/" class="legal-link">CGV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <div class="info-box">
+                <strong>Structure :</strong> 3 colonnes en grille CSS (Logo + Nav + Contact) + Section copyright en bas
+            </div>
+
+            <div class="code-block">
+                <pre><span class="tag">&lt;footer</span> <span class="attr">class=</span><span class="value">"footer site-footer text-white"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"footer-container"</span><span class="tag">&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"footer-content"</span><span class="tag">&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"footer-column footer-column-logo"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"footer-column footer-column-nav"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+      <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"footer-column footer-column-contact"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+    <span class="tag">&lt;div</span> <span class="attr">class=</span><span class="value">"copyright-section"</span><span class="tag">&gt;</span>...<span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/footer&gt;</span></pre>
+            </div>
+        </div>
+
+        <!-- Section 2: Classes CSS utilisées -->
+        <div class="component-section">
+            <h2 class="section-title">2. Classes CSS du Design System</h2>
+            
+            <div class="info-box">
+                <strong>Classes principales :</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li><code>.footer</code> - Container principal avec glassmorphism</li>
+                    <li><code>.footer-container</code> - Container interne avec marges</li>
+                    <li><code>.footer-content</code> - Grille 3 colonnes</li>
+                    <li><code>.footer-column</code> - Colonne individuelle</li>
+                    <li><code>.footer-link</code> - Liens de navigation (blanc avec effet hover orange)</li>
+                    <li><code>.legal-link</code> - Liens légaux (gris avec hover orange)</li>
+                    <li><code>.social-icon</code> - Icônes sociales avec glassmorphism</li>
+                    <li><code>.copyright-section</code> - Section copyright en bas</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><span class="class">/* Footer principal */</span>
+<span class="tag">.footer</span> {
+    <span class="attr">background:</span> <span class="value">transparent</span>;
+    <span class="attr">backdrop-filter:</span> <span class="value">blur(20px)</span>;
+    <span class="attr">border:</span> <span class="value">1px solid rgba(255, 255, 255, 0.2)</span>;
+    <span class="attr">border-radius:</span> <span class="value">15px</span>;
+    <span class="attr">max-width:</span> <span class="value">1518px</span>;
+    <span class="attr">margin:</span> <span class="value">50px auto</span>;
+}
+
+<span class="class">/* Grille 3 colonnes */</span>
+<span class="tag">.footer-content</span> {
+    <span class="attr">display:</span> <span class="value">grid</span>;
+    <span class="attr">grid-template-columns:</span> <span class="value">repeat(3, 1fr)</span>;
+    <span class="attr">gap:</span> <span class="value">3rem</span>;
+}
+
+<span class="class">/* Liens avec effet hover */</span>
+<span class="tag">.footer-link</span> {
+    <span class="attr">color:</span> <span class="value">rgba(255, 255, 255, 0.9)</span>;
+    <span class="attr">padding:</span> <span class="value">0.5rem 1rem</span>;
+    <span class="attr">border-radius:</span> <span class="value">25px</span>;
+}
+
+<span class="tag">.footer-link:hover</span> {
+    <span class="attr">background:</span> <span class="value">rgba(255, 255, 255, 0.1)</span>;
+    <span class="attr">transform:</span> <span class="value">translateY(-1px)</span>;
+}</pre>
+            </div>
+        </div>
+
+        <!-- Section 3: Ordre des liens -->
+        <div class="component-section">
+            <h2 class="section-title">3. Ordre des Liens de Navigation</h2>
+            
+            <div class="info-box">
+                <strong>⚠️ Important :</strong> L'ordre des liens doit être identique au header
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 12px; margin-top: 20px;">
+                <ul class="footer-nav" style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 0.75rem;"><a href="/" class="footer-link">1. Accueil</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/experts-ia/" class="footer-link">2. Expert IA</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/nos-solutions-ia/" class="footer-link">3. Nos Solutions</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/a-propos/" class="footer-link">4. About</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/blog/" class="footer-link">5. Blog</a></li>
+                    <li style="margin-bottom: 0.75rem;"><a href="/contact/" class="footer-link">6. Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <pre><span class="tag">&lt;ul</span> <span class="attr">class=</span><span class="value">"footer-nav"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>Accueil<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/experts-ia/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>Expert IA<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/nos-solutions-ia/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>Nos Solutions<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/a-propos/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>About<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/blog/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>Blog<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="tag">&lt;li&gt;&lt;a</span> <span class="attr">href=</span><span class="value">"/contact/"</span> <span class="attr">class=</span><span class="value">"footer-link"</span><span class="tag">&gt;</span>Contact<span class="tag">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span></pre>
+            </div>
+        </div>
+
+        <!-- Section 4: Responsive -->
+        <div class="component-section">
+            <h2 class="section-title">4. Comportement Responsive</h2>
+            
+            <div class="info-box">
+                <strong>Mobile (0-767px) :</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>1 colonne verticale</li>
+                    <li>Texte centré</li>
+                    <li>Width: calc(100% - 40px)</li>
+                    <li>Margin: 40px auto</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="margin-top: 20px;">
+                <strong>Desktop (≥768px) :</strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li>3 colonnes en grille</li>
+                    <li>Texte aligné à gauche</li>
+                    <li>Width: calc(100% - 60px)</li>
+                    <li>Margin: 50px auto</li>
+                    <li>Gap: 2.5rem entre colonnes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
