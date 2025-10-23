@@ -920,6 +920,8 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     
     </style>
     
+    <!-- TEST GIT - Bordure rouge sur body -->
+    <link rel="stylesheet" href="<?php echo home_url('/test-bordure.css'); ?>">
     
     <?php wp_head(); ?>
     <?php astra_head_bottom(); ?>
