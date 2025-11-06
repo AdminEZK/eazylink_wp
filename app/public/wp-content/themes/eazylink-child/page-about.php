@@ -158,7 +158,7 @@ get_header();
                             'name' => 'Eric Aubin',
                             'role' => 'Co-Fondateur & Stratégie',
                             'image' => get_stylesheet_directory_uri() . '/assets/images/team-3.jpg',
-                            'bio' => 'Dirigeant multi-entreprises et certifié EDHEC en transformation digitale, je pilote la vision stratégique, les partenariats et notre réseau d\'experts. Mon rôle : apporter légitimité juridique et business, tout en favorisant la transmission intergénérationnelle.',
+                            'bio' => 'Dirigeant multi-entreprises certifié EDHEC, je pilote la vision stratégique et les partenariats. Mon rôle : apporter légitimité business et favoriser la transmission intergénérationnelle.',
                             'linkedin' => 'https://www.linkedin.com/'
                         ),
                         
