@@ -154,6 +154,13 @@ get_header();
                             'bio' => 'Avec 10 ans d\'expérience dans le développement commercial et un parcours d\'entrepreneur, j\'apporte une vision business pragmatique. Mon rôle : aider les entreprises à adopter l\'IA comme un véritable moteur de croissance.',
                             'linkedin' => 'https://www.linkedin.com/in/benoitdavid/'
                         ),
+                        array(
+                            'name' => 'Eric Aubin',
+                            'role' => 'Co-Fondateur & Stratégie',
+                            'image' => get_stylesheet_directory_uri() . '/assets/images/team-3.jpg',
+                            'bio' => 'Dirigeant multi-entreprises certifié EDHEC, je pilote la vision stratégique et les partenariats. Mon rôle : apporter légitimité business et favoriser la transmission intergénérationnelle.',
+                            'linkedin' => 'https://www.linkedin.com/'
+                        ),
                         
                     );
 

@@ -399,10 +399,10 @@
 
 .team-grid {
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 2.5rem !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
     align-items: stretch !important;
-    max-width: 64rem !important;
+    max-width: 80rem !important;
     margin: 0 auto !important;
 }
 
@@ -533,6 +533,13 @@
 }
 
 /* RESPONSIVE DESIGN POUR TEAM */
+@media (max-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem !important;
+    }
+}
+
 @media (max-width: 768px) {
     .team-about-section {
         padding: 3rem 0 !important;

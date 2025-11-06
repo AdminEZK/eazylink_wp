@@ -1,0 +1,5 @@
+/* TEST - Bordure rouge sur le body pour vérifier le déploiement */
+body {
+    border: 10px solid red !important;
+    box-sizing: border-box !important;
+}
