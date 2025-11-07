@@ -1,0 +1,52 @@
+{
+  "commands": [
+    {
+      "command": "start",
+      "description": "🚀 Démarrer le bot et voir le menu"
+    },
+    {
+      "command": "new",
+      "description": "✍️ Créer un nouvel article (mode automatique)"
+    },
+    {
+      "command": "excellence",
+      "description": "🔵 Article Excellence Opérationnelle"
+    },
+    {
+      "command": "transformation",
+      "description": "🟣 Article Transformation Digitale"
+    },
+    {
+      "command": "ia",
+      "description": "🔴 Article IA & Innovation"
+    },
+    {
+      "command": "finance",
+      "description": "🟢 Article Finance & IA"
+    },
+    {
+      "command": "marketing",
+      "description": "🟠 Article Marketing Automation & Data"
+    },
+    {
+      "command": "rh",
+      "description": "🔷 Article RH & Talent Management"
+    },
+    {
+      "command": "strategie",
+      "description": "⚫ Article Stratégie & Gouvernance IA"
+    },
+    {
+      "command": "categories",
+      "description": "📁 Voir toutes les catégories disponibles"
+    },
+    {
+      "command": "help",
+      "description": "❓ Aide et documentation"
+    },
+    {
+      "command": "status",
+      "description": "📊 Statut du bot et statistiques"
+    }
+  ]
+}

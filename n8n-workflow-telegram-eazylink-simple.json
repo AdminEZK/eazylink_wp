@@ -1,0 +1,326 @@
+{
+  "name": "EazyLink - Telegram to Article (Anthropic Only)",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"]
+      },
+      "id": "telegram-trigger",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [250, 300],
+      "webhookId": "telegram-webhook",
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIALS",
+          "name": "Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.text }}",
+              "operation": "startsWith",
+              "value2": "/"
+            }
+          ]
+        }
+      },
+      "id": "filter-commands",
+      "name": "Filter: Commands Only",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parser la commande Telegram\nconst text = $input.item.json.message.text;\nconst parts = text.split(' ');\nconst command = parts[0].replace('/', '').toLowerCase();\nconst subject = parts.slice(1).join(' ').trim();\n\n// Mapping commande → catégorie\nconst categoryMap = {\n  'excellence': {\n    name: 'Excellence Opérationnelle',\n    id: 1,\n    emoji: '🔵'\n  },\n  'transformation': {\n    name: 'Transformation Digitale',\n    id: 2,\n    emoji: '🟣'\n  },\n  'ia': {\n    name: 'Intelligence Artificielle & Innovation',\n    id: 3,\n    emoji: '🔴'\n  },\n  'finance': {\n    name: 'Finance & IA',\n    id: 4,\n    emoji: '🟢'\n  },\n  'marketing': {\n    name: 'Marketing Automation & Data',\n    id: 5,\n    emoji: '🟠'\n  },\n  'rh': {\n    name: 'RH & Talent Management',\n    id: 6,\n    emoji: '🔷'\n  },\n  'strategie': {\n    name: 'Stratégie & Gouvernance IA',\n    id: 7,\n    emoji: '⚫'\n  }\n};\n\n// Déterminer la catégorie\nlet category = null;\nlet forceCategory = false;\n\nif (command === 'new') {\n  // Mode automatique - Claude choisira\n  category = null;\n  forceCategory = false;\n} else if (categoryMap[command]) {\n  // Catégorie forcée\n  category = categoryMap[command];\n  forceCategory = true;\n} else {\n  // Commande inconnue\n  return [{\n    json: {\n      error: true,\n      message: `Commande inconnue: /${command}`,\n      chat_id: $input.item.json.message.chat.id\n    }\n  }];\n}\n\n// Vérifier qu'il y a un sujet\nif (!subject || subject.length < 10) {\n  return [{\n    json: {\n      error: true,\n      message: `❌ Veuillez fournir un sujet d'article.\\n\\nExemple: /${command} GPT-5 vient de sortir`,\n      chat_id: $input.item.json.message.chat.id\n    }\n  }];\n}\n\nreturn [{\n  json: {\n    command: command,\n    subject: subject,\n    category: category,\n    forceCategory: forceCategory,\n    chat_id: $input.item.json.message.chat.id,\n    user_id: $input.item.json.message.from.id,\n    user_name: $input.item.json.message.from.first_name\n  }\n}];"
+      },
+      "id": "parse-command",
+      "name": "Parse Command",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.error }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "check-error",
+      "name": "Check Error",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "={{ $json.message }}",
+        "additionalFields": {}
+      },
+      "id": "telegram-error",
+      "name": "Telegram: Error",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [1050, 450],
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIALS",
+          "name": "Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chat_id }}",
+        "text": "⏳ Création de l'article en cours...\\n\\n📊 Analyse du sujet...\\n✍️ Génération du contenu avec Claude...",
+        "additionalFields": {}
+      },
+      "id": "telegram-progress",
+      "name": "Telegram: Progress",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [1050, 150],
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIALS",
+          "name": "Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "claude-3-5-sonnet-20241022",
+        "options": {
+          "temperature": 0.7,
+          "maxTokens": 4000
+        }
+      },
+      "id": "anthropic-chat",
+      "name": "Anthropic Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1,
+      "position": [1250, 150],
+      "credentials": {
+        "anthropicApi": {
+          "id": "YOUR_ANTHROPIC_CREDENTIALS",
+          "name": "Anthropic Claude"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Tu es un expert en création de contenu SEO pour EazyLink.\n\n**Sujet de l'article** : {{ $json.subject }}\n\n{{ $json.forceCategory ? '**Catégorie imposée** : ' + $json.category.name + ' ' + $json.category.emoji : '**Mode automatique** : Choisis la meilleure catégorie parmi les 7 disponibles.' }}\n\n**Les 7 catégories disponibles** :\n1. 🔵 Excellence Opérationnelle - Optimisation des processus, amélioration continue, performance\n2. 🟣 Transformation Digitale - Digitalisation, modernisation IT, conduite du changement\n3. 🔴 Intelligence Artificielle & Innovation - IA générative, machine learning, innovation\n4. 🟢 Finance & IA - Fintech, analyse financière, automatisation comptable\n5. 🟠 Marketing Automation & Data - Marketing digital, automation, analytics\n6. 🔷 RH & Talent Management - Recrutement, gestion des talents, formation\n7. ⚫ Stratégie & Gouvernance IA - Stratégie IA, gouvernance, éthique, ROI\n\n**Ta mission** :\n1. {{ !$json.forceCategory ? 'Analyse le sujet et choisis la catégorie la plus pertinente' : 'Utilise la catégorie imposée' }}\n2. Génère un article SEO optimisé de 1500-2000 mots\n3. Structure : Titre H1, Introduction, 3-5 sections H2 avec sous-sections H3, Conclusion\n4. Inclus des mots-clés pertinents naturellement\n5. Ton professionnel mais accessible\n6. Exemples concrets et chiffrés\n7. Call-to-action en fin d'article\n\n**Format de réponse (JSON)** :\n```json\n{\n  \"category_id\": 3,\n  \"category_name\": \"Intelligence Artificielle & Innovation\",\n  \"title\": \"Titre SEO optimisé (60-70 caractères)\",\n  \"meta_description\": \"Description SEO (150-160 caractères)\",\n  \"keywords\": [\"mot-clé 1\", \"mot-clé 2\", \"mot-clé 3\"],\n  \"content\": \"<h1>Titre</h1><p>Introduction...</p><h2>Section 1</h2>...\",\n  \"excerpt\": \"Résumé de 150 caractères\",\n  \"seo_score\": 85\n}\n```\n\nGénère l'article maintenant.",
+        "hasOutputParser": true
+      },
+      "id": "ai-agent",
+      "name": "AI Agent: Generate Article",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [1450, 150]
+    },
+    {
+      "parameters": {},
+      "id": "output-parser",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1,
+      "position": [1450, 350]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.WORDPRESS_URL }}/wp-json/wp/v2/posts",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "={{ $json.title }}"
+            },
+            {
+              "name": "content",
+              "value": "={{ $json.content }}"
+            },
+            {
+              "name": "excerpt",
+              "value": "={{ $json.excerpt }}"
+            },
+            {
+              "name": "status",
+              "value": "publish"
+            },
+            {
+              "name": "categories",
+              "value": "={{ [$json.category_id] }}"
+            },
+            {
+              "name": "meta",
+              "value": "={{ { _yoast_wpseo_title: $json.title, _yoast_wpseo_metadesc: $json.meta_description, _yoast_wpseo_focuskw: $json.keywords[0] } }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "wordpress-publish",
+      "name": "WordPress: Publish",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1650, 150],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "YOUR_WORDPRESS_CREDENTIALS",
+          "name": "WordPress Basic Auth"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Parse Command').item.json.chat_id }}",
+        "text": "=✅ **Article publié avec succès !**\\n\\n📝 **Titre** : {{ $('AI Agent: Generate Article').item.json.title }}\\n📁 **Catégorie** : {{ $('AI Agent: Generate Article').item.json.category_name }}\\n🔑 **Mots-clés** : {{ $('AI Agent: Generate Article').item.json.keywords.join(', ') }}\\n📊 **Score SEO** : {{ $('AI Agent: Generate Article').item.json.seo_score }}/100\\n\\n🔗 **WordPress** : {{ $json.link }}\\n\\n⏱️ Article créé par Claude (Anthropic)",
+        "additionalFields": {}
+      },
+      "id": "telegram-success",
+      "name": "Telegram: Success",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.1,
+      "position": [1850, 150],
+      "credentials": {
+        "telegramApi": {
+          "id": "YOUR_TELEGRAM_CREDENTIALS",
+          "name": "Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Filter: Commands Only",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter: Commands Only": {
+      "main": [
+        [
+          {
+            "node": "Parse Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Command": {
+      "main": [
+        [
+          {
+            "node": "Check Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Error": {
+      "main": [
+        [
+          {
+            "node": "Telegram: Progress",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram: Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram: Progress": {
+      "main": [
+        [
+          {
+            "node": "AI Agent: Generate Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent: Generate Article",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent: Generate Article": {
+      "main": [
+        [
+          {
+            "node": "WordPress: Publish",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent: Generate Article",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WordPress: Publish": {
+      "main": [
+        [
+          {
+            "node": "Telegram: Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-27T14:00:00.000Z",
+  "versionId": "1"
+}
