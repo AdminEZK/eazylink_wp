@@ -15,17 +15,7 @@
       <div class="footer-column footer-column-logo">
         <div class="footer-logo">
           <a href="<?php echo esc_url(home_url('/')); ?>">
-            <?php
-            if (has_custom_logo()) {
-                $custom_logo_id = get_theme_mod('custom_logo');
-                $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
-                if ($logo) {
-                    echo '<img src="' . esc_url($logo[0]) . '" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img">';
-                }
-            } else {
-                echo '<img src="' . get_site_url() . '/wp-content/images/logo%20EZK.png" alt="' . esc_attr(get_bloginfo('name')) . '" class="logo-img">';
-            }
-            ?>
+            <img src="https://eazylink.fr/wp-content/uploads/2025/11/Logo_signature.png" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="logo-img">
           </a>
         </div>
         <p class="footer-description">
