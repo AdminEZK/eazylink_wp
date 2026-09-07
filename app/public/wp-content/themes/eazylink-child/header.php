@@ -919,15 +919,7 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     /* Styles supprimés du header - tout est maintenant dans page-about.css */
     
     </style>
-    
-    <!-- TEST GIT - Bordure rouge sur body -->
-    <style>
-        body {
-            border: 10px solid red !important;
-            box-sizing: border-box !important;
-        }
-    </style>
-    
+
     <?php wp_head(); ?>
     <?php astra_head_bottom(); ?>
 </head>
