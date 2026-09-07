@@ -113,16 +113,16 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     <!-- BURGER MENU FIX - Z-INDEX -->
     <style>
     /* Fix z-index pour burger menu responsive */
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .burger-menu {
             z-index: 1002 !important;
             position: relative !important;
         }
-        
+
         .eazylink-header {
             z-index: 1001 !important;
         }
-        
+
         .mobile-nav {
             z-index: 1000 !important;
         }
@@ -533,21 +533,23 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     .eazylink-nav {
         display: flex !important;
         align-items: center !important;
-        gap: 2.5rem !important;
+        gap: 1.5rem !important;
         position: absolute !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
+        flex-wrap: nowrap !important;
     }
-    
+
     .nav-item {
         color: rgba(255, 255, 255, 0.9) !important;
         text-decoration: none !important;
-        padding: 0.75rem 1.5rem !important;
+        padding: 0.65rem 1rem !important;
         border-radius: 25px !important;
         transition: all 0.3s ease !important;
         font-weight: 500 !important;
-        font-size: 0.95rem !important;
+        font-size: 0.9rem !important;
         position: relative !important;
+        white-space: nowrap !important;
     }
     
     .nav-item:hover {
@@ -836,7 +838,7 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     }
     
     /* RESPONSIVE - MOBILE & TABLETTE */
-    @media (max-width: 768px) {
+    @media (max-width: 1200px) {
         .eazylink-header {
             padding: 2rem 0 !important;
             top: 40px !important;
@@ -1005,7 +1007,7 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
                                    (strpos($current_url, '/nos-solutions-ia') !== false)
                     ),
                     array(
-                        'title' => 'SEO & GEO',
+                        'title' => 'SEO/GEO',
                         'url' => home_url('/seo-geo-visibilite-google-ia/'),
                         'active' => (strpos($current_url, '/seo-geo-visibilite-google-ia') !== false)
                     ),
