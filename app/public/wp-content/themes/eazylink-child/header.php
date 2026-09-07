@@ -765,13 +765,18 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
         left: 0;
         width: 100vw;
         height: 100vh;
+        height: 100dvh;
         background: linear-gradient(135deg, rgba(26, 26, 62, 0.98) 0%, rgba(45, 27, 105, 0.98) 50%, rgba(255, 0, 110, 0.98) 100%);
         backdrop-filter: blur(20px);
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        gap: 2rem;
+        gap: 1.25rem;
+        padding: 120px 20px 40px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
         z-index: 1000;
         opacity: 0;
         visibility: hidden;
@@ -786,9 +791,9 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     .mobile-nav .nav-item {
         color: white !important;
         text-decoration: none !important;
-        font-size: 1.5rem !important;
+        font-size: 1.25rem !important;
         font-weight: 600 !important;
-        padding: 1rem 2rem !important;
+        padding: 0.6rem 1.5rem !important;
         border-radius: 25px !important;
         transition: all 0.3s ease !important;
         position: relative !important;
@@ -807,11 +812,12 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
         background: rgba(255, 255, 255, 0.2) !important;
         border: 2px solid #FF7043 !important;
         color: white !important;
-        padding: 1rem 3rem !important;
+        padding: 0.85rem 2.5rem !important;
         border-radius: 50px !important;
-        font-size: 1.2rem !important;
+        font-size: 1.1rem !important;
         font-weight: 600 !important;
-        margin-top: 2rem !important;
+        margin-top: 0.75rem !important;
+        flex-shrink: 0 !important;
         position: relative !important;
         overflow: hidden !important;
     }
