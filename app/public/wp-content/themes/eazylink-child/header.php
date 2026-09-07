@@ -1013,8 +1013,13 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
                                    (strpos($current_url, '/nos-solutions-ia') !== false)
                     ),
                     array(
-                        'title' => 'About', 
-                        'url' => home_url('/a-propos/'), 
+                        'title' => 'SEO & GEO',
+                        'url' => home_url('/seo-geo-visibilite-google-ia/'),
+                        'active' => (strpos($current_url, '/seo-geo-visibilite-google-ia') !== false)
+                    ),
+                    array(
+                        'title' => 'About',
+                        'url' => home_url('/a-propos/'),
                         'active' => (strpos($current_url, '/a-propos/') !== false)
                     ),
                     array(
