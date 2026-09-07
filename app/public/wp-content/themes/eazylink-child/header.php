@@ -50,7 +50,7 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
     }
     
     // CSS pour la page des solutions (avec cache-busting sur filemtime)
-    if (is_page_template('page-solutions.php') || is_page('solutions') || is_page('nos-solutions') || is_page('nos-solutions-ia')) {
+    if (is_page_template('page-solutions.php') || is_page('solutions') || is_page('nos-solutions') || is_page('nos-solutions-ia') || is_page_template('page-seo-geo-visibilite-google-ia.php') || is_page('seo-geo-visibilite-google-ia')) {
         $solutions_css_path = get_stylesheet_directory() . '/css/page-solutions.css';
         if (file_exists($solutions_css_path)) {
             $solutions_css_uri = get_stylesheet_directory_uri() . '/css/page-solutions.css';
@@ -1013,8 +1013,13 @@ if (apply_filters('astra_header_profile_gmpg_link', true)) {
                                    (strpos($current_url, '/nos-solutions-ia') !== false)
                     ),
                     array(
-                        'title' => 'About', 
-                        'url' => home_url('/a-propos/'), 
+                        'title' => 'SEO & GEO',
+                        'url' => home_url('/seo-geo-visibilite-google-ia/'),
+                        'active' => (strpos($current_url, '/seo-geo-visibilite-google-ia') !== false)
+                    ),
+                    array(
+                        'title' => 'About',
+                        'url' => home_url('/a-propos/'),
                         'active' => (strpos($current_url, '/a-propos/') !== false)
                     ),
                     array(

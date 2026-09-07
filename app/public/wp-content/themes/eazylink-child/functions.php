@@ -219,7 +219,7 @@ function eazylink_page_specific_styles() {
     }
     
     // CSS pour la page des solutions
-    if (is_page_template('page-solutions.php') || is_page('solutions')) {
+    if (is_page_template('page-solutions.php') || is_page('solutions') || is_page_template('page-seo-geo-visibilite-google-ia.php') || is_page('seo-geo-visibilite-google-ia')) {
         if (file_exists(get_stylesheet_directory() . '/css/page-solutions.css')) {
             wp_enqueue_style(
                 'eazylink-page-solutions',
